@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using SwapNShopApplication.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,11 +15,11 @@ namespace SwapNShopApplication.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [EnableCors("AllowDevelopmentEnvironment")]
-    public class InventoryController : Controller
+    public class EquipmentController : Controller
     {
         private SwapNShopDbContext _context;
 
-        public InventoryController(SwapNShopDbContext context)
+        public EquipmentController(SwapNShopDbContext context)
         {
             _context = context;
         }
@@ -88,8 +89,32 @@ namespace SwapNShopApplication.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody] Equipment equipment)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Equipment.Add(equipment);
+            _context.SaveChanges();
+
+            //try
+            //{
+            //    _context.SaveChanges();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (GeekExists(geek.GeekId))
+            //    {
+            //        return new StatusCodeResult(StatusCodes.Status409Conflict);
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+            return Ok();
         }
 
         // PUT api/values/5

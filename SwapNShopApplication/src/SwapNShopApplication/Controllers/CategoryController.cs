@@ -13,40 +13,30 @@ namespace SwapNShopApplication.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [EnableCors("AllowDevelopmentEnvironment")]
-    public class PicturesController : Controller
+    public class CategoryController : Controller
     {
         private SwapNShopDbContext _context;
 
-        public PicturesController(SwapNShopDbContext context)
+        public CategoryController(SwapNShopDbContext context)
         {
             _context = context;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            IQueryable<Category> category = from c in _context.Category
+                                            select c;
+
+            return Ok(category);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public string Get(int id)
         {
-            IQueryable<Picture> pictureList = from pl in _context.PictureList
-                                              join e in _context.Equipment
-                                              on pl.IdEquipment equals e.IdEquipment
-
-                                              join p in _context.Picture
-                                              on pl.IdPicture equals p.IdPicture
-
-                                              where e.IdEquipment == id
-                                              select new Picture
-                                              {
-                                                  image = p.image
-                                              };
-
-            return Ok(pictureList);
+            return "value";
         }
 
         // POST api/values

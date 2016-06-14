@@ -1,0 +1,14 @@
+<div>
+  <input id="movieSearchTxt" type="text" ng-model="movieToSearch">
+  <button ng-click="searchMovies()">Search!</button>
+</div>
+
+<div>
+  searchResults:
+</div>
+
+<div class="col-md-4" ng-repeat="movie in searchResults">
+  <h1>{{ movie.title }}</h1>
+  <img src="{{ movie.poster }}" alt="">
+  <p><a href="#/movies/list" ng-click="addToWatchlist()">Add To FB</a></p>
+</div>

@@ -1,0 +1,16 @@
+<section class="song-list">
+  <h1>Add a new song</h1>
+  <div>
+    Song name: <input type="text" autofocus="true" ng-model="newSong.name" />
+  </div>
+  <div>
+    Album Name: <input type="text" ng-model="newSong.albumName" />
+  </div>
+  <div>
+    Album Year: <input type="text" ng-model="newSong.albumYear" />
+  </div>
+  <div>
+    Artist: <input type="text" ng-model="newSong.artist" />
+  </div>
+  <button ng-click="addSong()">Add Song</button>
+</section>
