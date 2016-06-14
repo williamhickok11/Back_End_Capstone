@@ -1,0 +1,14 @@
+{
+  "name": "angular",
+  "homepage": "https://github.com/williamhickok11/Back_End_Capstone",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
