@@ -3,22 +3,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NSS Starter Kit - Angular</title>
-  <!-- <link rel="stylesheet" type="text/css" href="styles/main.css"> -->
+  <title>Swap N' Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body ng-app="SwapNShop">
-
+  
+  <div class="include_div" ng-include="'partials/navBar.html'"></div>
   <div ng-view></div>
 
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
 
   <script src="app/app.js"></script>
 
   <script src="app/controllers/mainController.js"></script>
+  <script src="app/controllers/addEquipmentCtrl.js"></script>
+  <script src="app/controllers/registerCtrl.js"></script>
+  <script src="app/factories/AuthFactory.js"></script>
   <!-- <script src="app/controllers/createCtrl.js"></script> -->
-  <!-- <script src="app/controllers/registerCtrl.js"></script> -->
   
 
 </body>

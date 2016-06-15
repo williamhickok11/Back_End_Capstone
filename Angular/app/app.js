@@ -2,23 +2,23 @@
 
 /* exported MusicHistory */
 
-let SwapNShop = angular.module("SongApp", ["ngRoute"])
+let SwapNShop = angular.module("SwapNShop", ["ngRoute"])
 
 SwapNShop.config(["$routeProvider",
   function ($routeProvider) {
     $routeProvider.
       when("/", {
+        templateUrl: "partials/register.html",
+        controller: 'registerCtrl'
+      }).
+      when("/homepage", {
         templateUrl: "partials/homepage.html",
         controller: 'mainCtrl'
       }).
-      // when("/create", {
-      //   templateUrl: "partials/create.html",
-      //   controller: 'createCtrl'
-      // }).
-      // when("/register", {
-      //   templateUrl: "partials/register.html",
-      //   controller: 'registerCtrl'
-      // }).
+      when("/add_equipment", {
+        templateUrl: "partials/add_equipment.html",
+        controller: 'addEquipmentCtrl'
+      }).
       otherwise({
         redirectTo: "/"
       });

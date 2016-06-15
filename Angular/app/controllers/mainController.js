@@ -1,15 +1,20 @@
 "use strict";
- console.log("got here")
 
 SwapNShop.controller("mainCtrl", [
   "$scope",
   "$http",
+  "$location",
 
-  function ($scope, $http) {
-  	console.log("go")
-    $scope.figurines = [];
+  function ($scope, $http, $location) {
+  	$scope.equipment = [];
 
-    $http.get('http://localhost:5000/api/Inventory')
-    .success(results => $scope.figurines = results);
-    }
+		$http
+			.get('http://localhost:49881/api/Equipment')
+			.success(inv => {
+				$scope.equipment = inv;
+				console.log("equipment", $scope.equipment);
+			});
+		
+
+	}
 ]);

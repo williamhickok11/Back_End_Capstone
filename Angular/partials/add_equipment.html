@@ -1,0 +1,87 @@
+<div>
+	<label for="name">Name of equipment</label>
+	<input type="text" name="name" ng-model="equipment.name">
+</div>
+
+<div>
+	<label for="category">Category</label>
+	<select name="singleSelect" id="singleSelect" class="browser-default">
+		<!-- <option value="" disabled selected>Category</option> -->
+    <option value="{{category[0].IdCategory}}">{{category[0].title}}</option>
+    <option value="{{category[1].IdCategory}}">{{category[1].title}}</option>
+    <option value="{{category[2].IdCategory}}">{{category[2].title}}</option>
+    <option value="{{category[3].IdCategory}}">{{category[3].title}}</option>
+    <option value="{{category[4].IdCategory}}">{{category[4].title}}</option>
+    <option value="{{category[5].IdCategory}}">{{category[5].title}}</option>
+    <option value="{{category[6].IdCategory}}">{{category[6].title}}</option>
+    <option value="{{category[7].IdCategory}}">{{category[7].title}}</option>
+  </select>
+</div>
+
+<div>
+	<label for="description">Description</label>
+	<input type="text" name="description" ng-model="equipment.description">
+</div>
+
+<div>
+	<label for="condition">Condition</label>
+	<input type="text" name="condition" ng-model="equipment.condition">
+</div>
+
+<div>
+	<label for="price">Price/Day</label>
+	<input type="number" name="price" ng-model="equipment.pricePerDay">
+</div>
+
+
+
+
+
+
+
+<!-- 
+<div ng-app="fileUpload" ng-controller="MyCtrl">
+     <h4>Upload on file select</h4>
+
+    <button ngf-select="uploadFiles($files)" multiple 
+            accept="image/*">Select Files</button>
+    <br>
+    <br>Files:
+    <ul>
+        <li ng-repeat="f in files" style="font:smaller">
+            {{f.name}}
+        </li>
+    </ul>
+    <span class="progress" ng-show="progress >= 0">
+        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+    </span>
+    {{errorMsg}}
+</div>
+
+
+ -->
+
+
+
+
+
+
+
+<button ng-click="createEquipment()">Start Renting Your Equipment</button>
+<!-- <h1 ng-model="category">{{category[0].title}}</h1> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

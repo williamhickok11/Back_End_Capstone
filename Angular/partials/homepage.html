@@ -1,1 +1,26 @@
-<h1>hello world</h1>
+<article class="equipment_list_home">
+	<div class="row">
+		<div class="col m3" id="side_bar">
+			
+			<div><a href="/#/add_equipment"><button id="add_equipment">Add equipment to rent</button></a></div>
+		</div>
+
+		<div id="equipment_list_col" class="col m9">
+			<section>
+				<header><h1>What are you looking to rent?</h1></header>
+				<div id="container">
+
+				  <div ng-repeat="item in equipment">
+				  	<div class="">
+				  		<p>{{ item.name }}</p>
+				  		<p>{{ item.picList[0].image }}</p>
+				  		<p>{{ item.description }}</p>
+				  		<p>{{ item.Musician }}</p>
+				  	</div>
+				  </div>
+				  
+			  </div>
+			</section>
+		</div>
+	</div>
+</article>
