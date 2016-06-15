@@ -33,50 +33,25 @@
 	<input type="number" name="price" ng-model="equipment.pricePerDay">
 </div>
 
-
-
-
-
-
-
-<!-- 
-<div ng-app="fileUpload" ng-controller="MyCtrl">
-     <h4>Upload on file select</h4>
-
-    <button ngf-select="uploadFiles($files)" multiple 
-            accept="image/*">Select Files</button>
-    <br>
-    <br>Files:
-    <ul>
-        <li ng-repeat="f in files" style="font:smaller">
-            {{f.name}}
-        </li>
-    </ul>
-    <span class="progress" ng-show="progress >= 0">
-        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-    </span>
-    {{errorMsg}}
+<div>
+<!-- <input type="file" ngf-select="setNewImage($files)" multiple> -->
+  <h6>Upload all images:</h6>
+  <button ngf-select="uploadFiles($files)" multiple 
+          accept="image/*">Select Files</button>
+  <br>
+  <br>Files:
+  <ul>
+      <li ng-repeat="f in files" style="font:smaller">
+          {{f.name}}
+      </li>
+  </ul>
+  <span class="progress" ng-show="progress >= 0">
+      <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+  </span>
+  {{errorMsg}}
 </div>
 
-
- -->
-
-
-
-
-
-
-
 <button ng-click="createEquipment()">Start Renting Your Equipment</button>
-<!-- <h1 ng-model="category">{{category[0].title}}</h1> -->
-
-
-
-
-
-
-
-
 
 
 

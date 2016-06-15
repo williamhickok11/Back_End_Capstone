@@ -2,7 +2,7 @@
 
 /* exported MusicHistory */
 
-let SwapNShop = angular.module("SwapNShop", ["ngRoute"])
+let SwapNShop = angular.module("SwapNShop", ["ngRoute", "ngFileUpload"])
 
 SwapNShop.config(["$routeProvider",
   function ($routeProvider) {
@@ -19,8 +19,13 @@ SwapNShop.config(["$routeProvider",
         templateUrl: "partials/add_equipment.html",
         controller: 'addEquipmentCtrl'
       }).
+      when("/view_inventory", {
+        templateUrl: "partials/view_inventory.html",
+        controller: 'viewInventoryCtrl'
+      }).
       otherwise({
         redirectTo: "/"
       });
   }]);
+
 

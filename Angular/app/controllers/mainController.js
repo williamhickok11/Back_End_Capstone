@@ -14,7 +14,6 @@ SwapNShop.controller("mainCtrl", [
 				$scope.equipment = inv;
 				console.log("equipment", $scope.equipment);
 			});
-		
-
+			
 	}
 ]);

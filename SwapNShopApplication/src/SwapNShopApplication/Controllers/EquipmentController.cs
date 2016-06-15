@@ -99,15 +99,44 @@ namespace SwapNShopApplication.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] Equipment equipment)
+        public IActionResult Post([FromBody] EquipmentJSONModel equipment)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Equipment.Add(equipment);
-            _context.SaveChanges();
+            // Local list of Pics to use in the many to many relationship with the equipment
+            List<IQueryable> picsForPicListTable = new List<IQueryable>();
+            // Get access to a list of the images you have passed in
+            var pictureList = equipment.images;
+            // Loop though those images to add them to the database
+            foreach (var pic in pictureList)
+            {
+                // create a new picture to add to the database
+                Picture picture = new Picture();
+                picture.image = pic.ToString();
+                // Save to the database
+                _context.Picture.Add(picture);
+                _context.SaveChanges();
+                // Get access to the id of the new pic and add to a list
+                var picId = from p in _context.Picture
+                            where p.image == pic
+                            select new
+                            {
+                                IdPicture = p.IdPicture
+                            };
+                picsForPicListTable.Add(picId);
+            }
+
+            // Add the equipment
+
+            // Get access to the equipment
+
+            // Add a PictureList
+
+            //_context.Equipment.Add(equipment);
+            //_context.SaveChanges();
 
             //try
             //{
