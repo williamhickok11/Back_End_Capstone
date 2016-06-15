@@ -43,9 +43,19 @@ namespace SwapNShopApplication.Controllers
                                                condition = e.condition,
                                                category = c.title,
                                                musician = m.userName,
-                                               PicListHref = String.Format("/api/Pictures?equipmentId={0}", e.IdEquipment)
-                                           };
+                                               picList = from pl in _context.PictureList
+                                                         join eq in _context.Equipment
+                                                         on pl.IdEquipment equals eq.IdEquipment
 
+                                                         join p in _context.Picture
+                                                         on pl.IdPicture equals p.IdPicture
+
+                                                         where eq.IdEquipment == e.IdEquipment
+                                                         select new
+                                                         {
+                                                             image = p.image
+                                                         }
+                                           };
             return Ok(equipment);
         }
 

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using SwapNShopApplication.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -63,8 +65,44 @@ namespace SwapNShopApplication.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Musician musician)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var existingUser = from g in _context.Musician
+                               where g.userName == musician.userName
+                               select g;
+
+            if (existingUser.Count<Musician>() > 0)
+            {
+                return new StatusCodeResult(StatusCodes.Status409Conflict);
+            }
+
+
+            _context.Musician.Add(musician);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (MusicianExists(musician.IdMusician))
+                {
+                    return new StatusCodeResult(StatusCodes.Status409Conflict);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            //return CreatedAtRoute("GetMusician", new { id = musician.IdMusician }, musician);
+            return Ok();
+
         }
 
         // PUT api/values/5
@@ -77,6 +115,11 @@ namespace SwapNShopApplication.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        private bool MusicianExists(int id)
+        {
+            return _context.Musician.Count(e => e.IdMusician == id) > 0;
         }
     }
 }

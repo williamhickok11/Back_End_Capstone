@@ -36,9 +36,12 @@ namespace SwapNShopApplication
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://example.com"));
-            });
+                options.AddPolicy("AllowDevelopmentEnvironment",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+        });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
