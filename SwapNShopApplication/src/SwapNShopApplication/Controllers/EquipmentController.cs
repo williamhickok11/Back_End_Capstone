@@ -107,7 +107,7 @@ namespace SwapNShopApplication.Controllers
             }
 
             // Local list of Pics to use in the many to many relationship with the equipment
-            List<IQueryable> picsForPicListTable = new List<IQueryable>();
+            List<int> picIDsForPicListTable = new List<int>();
             // Get access to a list of the images you have passed in
             var pictureList = equipment.images;
             // Loop though those images to add them to the database
@@ -124,19 +124,43 @@ namespace SwapNShopApplication.Controllers
                             where p.image == pic
                             select new
                             {
-                                IdPicture = p.IdPicture
+                                ID = p.IdPicture
                             };
-                picsForPicListTable.Add(picId);
+                picIDsForPicListTable.Add(picId.First().ID);   
             }
 
             // Add the equipment
+            Equipment currEquipment = new Equipment
+            {
+                name = equipment.name,
+                description = equipment.description,
+                IdCategory = equipment.IdCategory,
+                IdMusician = equipment.IdMusician,
+                pricePerDay = equipment.pricePerDay,
+                condition = equipment.condition
+            };
+            _context.Equipment.Add(currEquipment);
+            _context.SaveChanges();
 
-            // Get access to the equipment
-
-            // Add a PictureList
-
-            //_context.Equipment.Add(equipment);
-            //_context.SaveChanges();
+            // Get access to the equipment and grab the ID
+            var equipId = from e in _context.Equipment
+                          where e.description == currEquipment.description
+                          && e.condition == currEquipment.condition
+                          && e.name == currEquipment.name
+                          select new
+                          {
+                              ID = e.IdEquipment
+                          };
+            
+            // Add to PictureList with reference to the picIds and equipment id
+            foreach (var item in picIDsForPicListTable)
+            {
+                PictureList pl = new PictureList
+                {
+                    IdEquipment = equipId.First().ID,
+                    IdPicture = item
+                };
+            }
 
             //try
             //{
