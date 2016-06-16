@@ -23,9 +23,15 @@ SwapNShop.config(["$routeProvider",
         templateUrl: "partials/view_inventory.html",
         controller: 'viewInventoryCtrl'
       }).
+      when("/details_view", {
+        templateUrl: "partials/details_view.html",
+        controller: 'detailsCtrl'
+      }).
       otherwise({
         redirectTo: "/"
       });
   }]);
+
+
 
 

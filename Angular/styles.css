@@ -12,3 +12,20 @@
 }
 form .progress {
     line-height: 15px;
+}
+
+/*equipment view*/
+.individual_equipment {
+    box-sizing: border-box;
+	width: 30%;
+	border: 2px solid black;
+	margin: 10px 5px;
+}
+
+.individual_equipment:hover {
+    border: 7px solid blue;
+}
+
+.individual_equipment img {
+	width: 100%;
+}

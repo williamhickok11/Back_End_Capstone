@@ -52,7 +52,6 @@ SwapNShop.controller("addEquipmentCtrl", [
 	        	for (var i = 0; i < base64URLs.length; i++) {
 	        		imageList.push(base64URLs[i]);
 	        	}
-	          //$scope.image = base64URLs[0];
 	          $scope.equipment.images = imageList;
 	          console.log("Images successfully stored");
 	        }

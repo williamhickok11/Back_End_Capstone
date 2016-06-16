@@ -12,7 +12,8 @@
   
   <div class="include_div" ng-include="'partials/navBar.html'"></div>
   <div ng-view></div>
-
+  
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -26,7 +27,9 @@
   <script src="app/controllers/addEquipmentCtrl.js"></script>
   <script src="app/controllers/registerCtrl.js"></script>
   <script src="app/controllers/viewInventoryCtrl.js"></script>
-  <script src="app/factories/AuthFactory.js"></script>
+  <script src="app/controllers/detailsCtrl.js"></script>
+  <script src="app/factories/authFactory.js"></script>
+  <script src="app/factories/equipFactory.js"></script>
 
   <!-- <script src="app/controllers/createCtrl.js"></script> -->
   

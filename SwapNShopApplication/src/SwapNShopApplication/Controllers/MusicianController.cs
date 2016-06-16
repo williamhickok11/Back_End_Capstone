@@ -26,41 +26,55 @@ namespace SwapNShopApplication.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] string username)
         {
-            IQueryable<Musician> musicians = from m in _context.Musician
-                                             select m;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return Ok(musicians);
+            IQueryable<Musician> users = from user in _context.Musician
+                                         select new Musician
+                                         {
+                                             IdMusician = user.IdMusician,
+                                             userName = user.userName,
+                                             email = user.email,
+                                             city = user.city,
+                                             state = user.state,
+                                             rating = user.rating,
+                                             description = user.description
+                                         };
+
+            if (username != null)
+            {
+                users = users.Where(g => g.userName == username);
+            }
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(users);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
-        {
-            IQueryable<object> musician = from m in _context.Musician
-                                          select new
-                                          {
-                                              userName = m.userName,
-                                              description = m.description,
-                                              email = m.email,
-                                              rating = m.rating,
-                                              city = m.city,
-                                              state = m.state,
-                                              comments = from cl in _context.CommentList
-                                                         join ms in _context.Musician
-                                                         on cl.IdMusician equals ms.IdMusician
-                                                         join c in _context.Comment
-                                                         on cl.IdComment equals c.IdComment
-                                                         where cl.IdMusician == id
-                                                         select new
-                                                         {
-                                                             message = c.message,
-                                                             date = c.date
-                                                         }
-                                          };
+        {   //STEVES CODE
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            return Ok(musician);
+            Musician m = _context.Musician.Single(e => e.IdMusician == id);
+
+            if (m == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(m);
         }
 
         // POST api/values
@@ -123,3 +137,41 @@ namespace SwapNShopApplication.Controllers
         }
     }
 }
+
+
+
+
+
+//// PUT api/values/5
+//[HttpPut("{id}")]
+//public IActionResult Get(int id, [FromBody]string value)
+//{
+//    if (!ModelState.IsValid)
+//    {
+//        return BadRequest(ModelState);
+//    }
+
+//    IQueryable<Musician> users = from user in _context.Musician
+//                                 select new Musician
+//                                 {
+//                                     IdMusician = user.IdMusician,
+//                                     userName = user.userName,
+//                                     email = user.email,
+//                                     description = user.description,
+//                                     city = user.city,
+//                                     state = user.state,
+//                                     rating = user.rating,
+//                                 };
+
+//    if (username != null)
+//    {
+//        users = users.Where(g => g.Username == username);
+//    }
+
+//    if (users == null)
+//    {
+//        return NotFound();
+//    }
+
+//    return Ok(users);
+//}

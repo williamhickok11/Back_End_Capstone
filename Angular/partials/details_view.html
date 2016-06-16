@@ -1,0 +1,19 @@
+<article class="equipment_to_rent">
+	<div class="row">
+		<div class="col m3" id="side_bar">
+			<div><a href="/#/add_equipment"><button id="add_equipment">Add equipment to rent</button></a></div>
+			<div><a href="/#/view_inventory"><button id="view_inventory">View your equipment</button></a></div>
+		</div>
+
+		<div id="equipment_to_rent_col" class="col m9">
+			<section>
+				<header><h1>{{ equipment.name }}</h1></header>
+			  	<div class="col m3">
+			  		<p>{{ equipment.description }}</p>
+			  		<p><img ng-click="showImgModal()" ng-src="{{ equipment.picList[0].image }}" alt=""></p>
+			  		<p>{{ equipment.Musician }}</p>
+			  	</div>
+			</section>
+		</div>
+	</div>
+</article>

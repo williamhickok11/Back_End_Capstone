@@ -1,1 +1,27 @@
-<h1>hello</h1>
+<article class="equipment_list_home">
+	<div class="row">
+		<div class="col m3" id="side_bar">
+			
+			<div><a href="/#/add_equipment"><button id="add_equipment">Add equipment to rent</button></a></div>
+			<div><a href="/#/view_inventory"><button id="view_inventory">View your equipment</button></a></div>
+		</div>
+
+		<div id="	equipment_list_col" class="col m9">
+			<section>
+				<header><h1>Your Equipment:</h1></header>
+				<div class="container">
+
+				  <div ng-repeat="item in equipment">
+				  	<div ng-click="detailsView(item.id)" class="col m3 individual_equipment">
+				  		<p>{{ item.name }}</p>
+				  		<p><img ng-src="{{ item.picList[0].image }}" alt=""></p>
+				  		<p>{{ item.Musician }}</p>
+				  	</div>
+				  </div>
+				  
+			  </div>
+			</section>
+		</div>
+	</div>
+</article>
+

@@ -1,3 +1,34 @@
 <h1>Register</h1>
 
 <button ng-click="githubOauth()">Sighn in with Github</button>
+
+
+
+
+<div class="login">
+    <div class="row">
+      	<div class="col m6 offset-m3 white">
+        	<section>
+          		<div>
+             		User Name: <input ng-model="dataFromFireUser.name" id="sign_up_userName" type="text" autofocus="true">
+          		</div>
+          		<div>
+             		State: <input ng-model="dataFromFireUser.state" id="sign_up_userState" type="text">
+          		</div>
+          		<div>
+             		City: <input ng-model="dataFromFireUser.city" id="sign_up_userCity" type="text">
+          		</div>
+	          	<div>
+	              	Email: <input ng-model="dataFromFireUser.email" id="sign_up_email" type="text">
+	          	</div>
+	          	<div>
+	            	Password: <input ng-model="dataFromFireUser.password" id="sign_up_password" type="password">
+	          	</div>
+	          	<div class="button_div">
+	            	<button id="login_up_BTN" class="mybutton waves-effect waves-light btn">Login</button>
+	            	<button id="sign_up_BTN" class="mybutton waves-effect waves-light btn">Sign Up</button>
+	          	</div>
+	        </section>
+      	</div>
+    </div>
+</div>

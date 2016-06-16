@@ -37,6 +37,7 @@ namespace SwapNShopApplication.Controllers
 
                                            select new
                                            {
+                                               id = e.IdEquipment,
                                                name = e.name,
                                                description = e.description,
                                                pricePerDay = e.pricePerDay,
@@ -79,7 +80,18 @@ namespace SwapNShopApplication.Controllers
                                                condition = e.condition,
                                                category = c.title,
                                                musician = m.userName,
-                                               PicListHref = String.Format("/api/Pictures?equipmentId={0}", e.IdEquipment),
+                                               picList = from pl in _context.PictureList
+                                                         join eq in _context.Equipment
+                                                         on pl.IdEquipment equals eq.IdEquipment
+
+                                                         join p in _context.Picture
+                                                         on pl.IdPicture equals p.IdPicture
+
+                                                         where eq.IdEquipment == e.IdEquipment
+                                                         select new
+                                                         {
+                                                             image = p.image
+                                                         },
                                                RentalDates = from e in _context.Equipment
                                                              join rd in _context.RentalDates
                                                              on e.IdEquipment equals rd.IdEquipment
@@ -160,6 +172,8 @@ namespace SwapNShopApplication.Controllers
                     IdEquipment = equipId.First().ID,
                     IdPicture = item
                 };
+                _context.PictureList.Add(pl);
+                _context.SaveChanges();
             }
 
             //try
