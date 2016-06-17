@@ -62,51 +62,100 @@ namespace SwapNShopApplication.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(int? M_ID, int? E_ID)
         {
-            IQueryable<object> equipment = from e in _context.Equipment
-                                           join m in _context.Musician
-                                           on e.IdMusician equals m.IdMusician
+            if (E_ID != null)
+            {
+                IQueryable<object> equipment = from e in _context.Equipment
+                                               join m in _context.Musician
+                                               on e.IdMusician equals m.IdMusician
 
-                                           join c in _context.Category
-                                           on e.IdCategory equals c.IdCategory
+                                               join c in _context.Category
+                                               on e.IdCategory equals c.IdCategory
 
-                                           where e.IdEquipment == id
-                                           select new
-                                           {
-                                               name = e.name,
-                                               description = e.description,
-                                               pricePerDay = e.pricePerDay,
-                                               condition = e.condition,
-                                               category = c.title,
-                                               musician = m.userName,
-                                               picList = from pl in _context.PictureList
-                                                         join eq in _context.Equipment
-                                                         on pl.IdEquipment equals eq.IdEquipment
+                                               where e.IdEquipment == E_ID
+                                               select new
+                                               {
+                                                   name = e.name,
+                                                   description = e.description,
+                                                   pricePerDay = e.pricePerDay,
+                                                   condition = e.condition,
+                                                   category = c.title,
+                                                   musician = m.userName,
+                                                   picList = from pl in _context.PictureList
+                                                             join eq in _context.Equipment
+                                                             on pl.IdEquipment equals eq.IdEquipment
 
-                                                         join p in _context.Picture
-                                                         on pl.IdPicture equals p.IdPicture
+                                                             join p in _context.Picture
+                                                             on pl.IdPicture equals p.IdPicture
 
-                                                         where eq.IdEquipment == e.IdEquipment
-                                                         select new
-                                                         {
-                                                             image = p.image
-                                                         },
-                                               RentalDates = from e in _context.Equipment
-                                                             join rd in _context.RentalDates
-                                                             on e.IdEquipment equals rd.IdEquipment
-
-                                                             join m in _context.Musician
-                                                             on rd.IdMusician equals m.IdMusician
+                                                             where eq.IdEquipment == e.IdEquipment
                                                              select new
                                                              {
-                                                                 musician = m.userName,
-                                                                 dateIN = rd.checkOutDates,
-                                                                 dateOUT = rd.checkInDates
-                                                             }
-                                           };
+                                                                 image = p.image
+                                                             },
+                                                   RentalDates = from e in _context.Equipment
+                                                                 join rd in _context.RentalDates
+                                                                 on e.IdEquipment equals rd.IdEquipment
 
-            return Ok(equipment);
+                                                                 join m in _context.Musician
+                                                                 on rd.IdMusician equals m.IdMusician
+                                                                 select new
+                                                                 {
+                                                                     musician = m.userName,
+                                                                     dateIN = rd.checkOutDates,
+                                                                     dateOUT = rd.checkInDates
+                                                                 }
+                                               };
+                return Ok(equipment);
+            }
+
+            if (M_ID != null)
+            {
+                IQueryable<object> equipment = from e in _context.Equipment
+                                               join m in _context.Musician
+                                               on e.IdMusician equals m.IdMusician
+
+                                               join c in _context.Category
+                                               on e.IdCategory equals c.IdCategory
+
+                                               where e.IdEquipment == M_ID
+                                               select new
+                                               {
+                                                   name = e.name,
+                                                   description = e.description,
+                                                   pricePerDay = e.pricePerDay,
+                                                   condition = e.condition,
+                                                   category = c.title,
+                                                   musician = m.userName,
+                                                   picList = from pl in _context.PictureList
+                                                             join eq in _context.Equipment
+                                                             on pl.IdEquipment equals eq.IdEquipment
+
+                                                             join p in _context.Picture
+                                                             on pl.IdPicture equals p.IdPicture
+
+                                                             where eq.IdEquipment == e.IdEquipment
+                                                             select new
+                                                             {
+                                                                 image = p.image
+                                                             },
+                                                   RentalDates = from e in _context.Equipment
+                                                                 join rd in _context.RentalDates
+                                                                 on e.IdEquipment equals rd.IdEquipment
+
+                                                                 join m in _context.Musician
+                                                                 on rd.IdMusician equals m.IdMusician
+                                                                 select new
+                                                                 {
+                                                                     musician = m.userName,
+                                                                     dateIN = rd.checkOutDates,
+                                                                     dateOUT = rd.checkInDates
+                                                                 }
+                                               };
+                return Ok(equipment);
+            }
+            return Ok();
         }
 
         // POST api/values

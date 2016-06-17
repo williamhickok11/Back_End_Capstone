@@ -28,21 +28,15 @@
       	<p><img ng-src="{{ equipment.picList[0].image }}" alt=""></p>
       	<p>{{ equipment.description }}</p>
 
-
-
 		<div class="row">
-			<div class="col m6"><p>Select Checkout Day</p></div>
-			<div class="col m6"><input ng-model="rentalDates.check_OUT_date" type="date"></div>
+			<div class="col m6"><p>Select Checkout Day:</p></div>
+			<div class="col m6"><input class="datepicker" ng-model="rentalDates.check_OUT_date" type="date" min="2016-06-18"></div>
 		</div>
 		<div class="row">
-			<div class="col m6"><p>Select Checkin Day</p></div>
-			<div class="col m6"><input ng-model="rentalDates.check_IN_date" type="date"></div>
+			<div class="col m6"><p>Select Checkin Day:</p></div>
+			<div class="col m6"><input class="datepicker" ng-model="rentalDates.check_IN_date" type="date" min="2016-06-18"></div>
 		</div>
       	
-
-
-
-
     </div>
     <div class="modal-footer">
       	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
