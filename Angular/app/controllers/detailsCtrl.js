@@ -16,17 +16,19 @@ SwapNShop.controller("detailsCtrl", [
   	$scope.equipment;
     let rentalDatesObject = {};
     let curr_equipment_ID = EquipFactory.getEquipment();
-    let curMusicicanID = AuthFactory.getUser();
+    $scope.curMusicican = AuthFactory.getUser();
+    console.log('mIDDDDD', $scope.curMusicican.IdMusician);
     
     rentalDatesObject.IdEquipment = curr_equipment_ID;
-    rentalDatesObject.IdMusician = curMusicicanID.IdMusician;
+    rentalDatesObject.IdMusician = $scope.curMusicican.IdMusician;
 
     // Get access to the specific item the user clicked on
 		$http
 			.get(`http://localhost:49881/api/Equipment?EquipmentID=${curr_equipment_ID}`)
 			.success(inv => {
 				$scope.equipment = inv[0];
-				console.log("equipment", $scope.equipment);
+        console.log("equipment", $scope.equipment);
+				console.log("equipment", $scope.equipment.musicianID);
 			});
 		
     // post rental request to the database

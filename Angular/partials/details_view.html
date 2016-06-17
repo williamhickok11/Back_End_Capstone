@@ -38,7 +38,10 @@
 		</div>
       	
     </div>
-    <div class="modal-footer">
+    <div ng-if="equipment.MusicianID == curMusicican.IdMusician" class="modal-footer">
       	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
+    </div>
+    <div ng-if="equipment.MusicianID != curMusicican.IdMusician" class="modal-footer">
+      	<a href="/#/view_inventory.html"><button class=" modal-action modal-close waves-effect waves-green btn-flat">Fiew Inventory</button></a>
     </div>
 </div>
