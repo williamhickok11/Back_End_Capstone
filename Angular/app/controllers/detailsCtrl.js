@@ -26,7 +26,24 @@ SwapNShop.controller("detailsCtrl", [
 		
     // post rental request to the database
     $scope.requestRent = function (files) {
-      console.log("rent")
+      console.log("rent", $scope.rentalDates)
+
+      $http({
+        url:`http://localhost:49881/api/Equipment/${curEquipID}`,
+        method: 'PUT',
+        // data: JSON.stringify($scope.equipment)
+      })
+      .success(function newEquipment (){
+        console.log('201 Created', newEquipment)
+          $location.path("/homepage");
+      })	
+    }
+	}
+]);
+
+
+
+
       // $http({
       //   url:'http://localhost:49881/api/Equipment',
       //   method: 'POST',
@@ -35,7 +52,4 @@ SwapNShop.controller("detailsCtrl", [
       // .success(function newEquipment (){
       //   console.log('201 Created', newEquipment)
       //     $location.path("/homepage");
-      // })	
-    }
-	}
-]);
+      // })  

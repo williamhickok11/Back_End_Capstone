@@ -196,8 +196,31 @@ namespace SwapNShopApplication.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id)
         {
+            //, [FromBody]Equipment eq
+            // Build out the piece of equipment by the id passed in
+            // This will declare that the equipment has been requested to rent
+            var newEQ = from e in _context.Equipment
+                        where e.IdEquipment == id
+                        select new Equipment
+                        {
+                            IdEquipment = e.IdEquipment,
+                            description = e.description,
+                            pricePerDay = e.pricePerDay,
+                            condition = e.condition,
+                            name = e.name,
+                            IdMusician = e.IdMusician,
+                            IdCategory = e.IdCategory,
+                            rentRequest = true
+                        };
+
+            var eq = newEQ.First();
+            _context.Equipment.Attach(eq);
+            _context.Entry(eq).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         // DELETE api/values/5

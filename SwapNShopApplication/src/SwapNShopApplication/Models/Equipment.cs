@@ -16,6 +16,7 @@ namespace SwapNShopApplication.Models
         public double pricePerDay { get; set; }
         public string condition { get; set; }
         public string description { get; set; }
+        public bool rentRequest { get; set; }
 
         // List from JASON request
 
