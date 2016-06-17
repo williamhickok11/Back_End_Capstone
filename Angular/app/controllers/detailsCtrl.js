@@ -23,7 +23,7 @@ SwapNShop.controller("detailsCtrl", [
 
     // Get access to the specific item the user clicked on
 		$http
-			.get(`http://localhost:49881/api/Equipment?E_ID=${curr_equipment_ID}`)
+			.get(`http://localhost:49881/api/Equipment?EquipmentID=${curr_equipment_ID}`)
 			.success(inv => {
 				$scope.equipment = inv[0];
 				console.log("equipment", $scope.equipment);
