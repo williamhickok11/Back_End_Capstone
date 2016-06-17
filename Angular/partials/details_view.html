@@ -9,11 +9,42 @@
 			<section>
 				<header><h1>{{ equipment.name }}</h1></header>
 			  	<div class="col m3">
-			  		<p>{{ equipment.description }}</p>
 			  		<p><img ng-click="showImgModal()" ng-src="{{ equipment.picList[0].image }}" alt=""></p>
-			  		<p>{{ equipment.Musician }}</p>
+			  		<p>{{ equipment.description }}</p>
+			  		<p>{{ equipment.musician }}</p>
+			  		 	<!-- Modal Trigger -->
+  					<button class="waves-effect waves-light btn modal-trigger" href="#modal1">Rent Request</button>
 			  	</div>
 			</section>
 		</div>
 	</div>
 </article>
+
+
+  <!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      	<h4>{{ equipment.name }}</h4>
+      	<p><img ng-src="{{ equipment.picList[0].image }}" alt=""></p>
+      	<p>{{ equipment.description }}</p>
+
+
+
+		<div class="row">
+			<div class="col m6"><p>Select Checkout Day</p></div>
+			<div class="col m6"><input ng-model="rentalDates.check_OUT_date" type="date"></div>
+		</div>
+		<div class="row">
+			<div class="col m6"><p>Select Checkin Day</p></div>
+			<div class="col m6"><input ng-model="rentalDates.check_IN_date" type="date"></div>
+		</div>
+      	
+
+
+
+
+    </div>
+    <div class="modal-footer">
+      	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
+    </div>
+</div>

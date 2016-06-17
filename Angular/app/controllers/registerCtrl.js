@@ -30,7 +30,6 @@ SwapNShop.controller('registerCtrl', [
 
 
 		$("#login_up_BTN").on('click', ()=>{
-		  	$scope.dataFromFireUser = {};
 
 		  	ref.authWithPassword({
 		    	email    : $scope.dataFromFireUser.email,
