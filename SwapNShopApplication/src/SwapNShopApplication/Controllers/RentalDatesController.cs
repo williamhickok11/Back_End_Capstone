@@ -24,16 +24,44 @@ namespace SwapNShopApplication.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get([FromQuery]int? EquipmentID)
         {
-            return new string[] { "value1", "value2" };
+            var rentalDates = from rd in _context.RentalDates
+                              select new RentalDates
+                              {
+                                  IdRentalDates = rd.IdRentalDates,
+                                  checkInDates = rd.checkInDates,
+                                  checkOutDates = rd.checkOutDates,
+                                  IdEquipment = rd.IdEquipment,
+                                  IdMusician = rd.IdMusician
+                              };
+
+            // Get all the rental dates for one piece of equipment
+            if (EquipmentID != null)
+            {
+                rentalDates = rentalDates.Where(r => r.IdEquipment == EquipmentID);
+            }
+
+            return Ok(rentalDates);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+        public IActionResult Get(int id)
+        {   //STEVES CODE
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            RentalDates m = _context.RentalDates.Single(e => e.IdRentalDates == id);
+
+            if (m == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(m);
         }
 
         // POST api/values
