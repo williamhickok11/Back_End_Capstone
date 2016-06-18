@@ -7,6 +7,7 @@ SwapNShop.controller("viewInventoryCtrl", [
   "AuthFactory",
 
   function ($scope, $http, $location, AuthFactory) {
+    $('.modal-trigger').leanModal();
   	$scope.equipment = [];
   	let user = AuthFactory.getUser();
   	console.log('user', user.IdMusician)

@@ -6,13 +6,13 @@
 			<div><a href="/#/view_inventory"><button id="view_inventory">View your equipment</button></a></div>
 		</div>
 
-		<div id="	equipment_list_col" class="col m9">
+		<div id="equipment_list_col" class="col m9">
 			<section>
 				<header><h1>Your Equipment:</h1></header>
 				<div class="container">
 
 				  <div ng-repeat="item in equipment">
-				  	<div ng-click="detailsView(item.id)" class="col m3 individual_equipment">
+				  	<div ng-click="showImgModal()" class="col m3 individual_equipment">
 				  		<p>{{ item.name }}</p>
 				  		<p><img ng-src="{{ item.picList[0].image }}" alt=""></p>
 				  		<p>{{ item.Musician }}</p>
@@ -25,3 +25,16 @@
 	</div>
 </article>
 
+  <!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      	<h4>{{ equipment.name }}</h4>
+      	<p><img class="modal_img" ng-src="{{ equipment.picList[0].image }}" alt=""></p>
+      	<p>{{ equipment.description }}</p>
+	    
+	    <!-- <div ng-if="EQMusicianID !== MusicianID" class="modal-footer">
+	      	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
+	    </div> -->
+	    
+    </div>
+</div>

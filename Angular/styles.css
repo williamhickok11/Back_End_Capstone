@@ -1,12 +1,40 @@
+body {
+    background-image: url("partials/BG_IMG.png");
+}
+#side_bar {
+    text-align: center;
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    display: inline-block;
+    width: 200px;
+    /*vertical-align: top;*/
+    background: grey;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+#side_bar button {
+    width: 90%;
+}
 #equipment_list_col {
-	background: red;
+    height: 708px;
+    overflow: scroll;   
+    float: right;
+    top: 64px;
+    bottom: 0;
+    display: inline-block;
+    width: 700px;
+    /*vertical-align: top;*/
+	background: white;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 /*FILE UPLOAD*/
 .thumb {
     width: 24px;
     height: 24px;
-    float: none;
+    float: none;`
     position: relative;
     top: 7px;
 }
@@ -14,7 +42,12 @@ form .progress {
     line-height: 15px;
 }
 
-/*equipment view*/
+/*ALL equipment view*/
+.equipment_list_home{
+    width: 900px;
+    margin: 0 auto;
+}
+
 .individual_equipment {
     box-sizing: border-box;
 	width: 30%;
@@ -23,14 +56,14 @@ form .progress {
 }
 
 .individual_equipment:hover {
-    border: 7px solid blue;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .individual_equipment img {
-	height: 70px;
+	max-height: 70px;
     margin: 0 auto;
+    max-width: 100px;
 }
-
 
 
 /*Details view*/
