@@ -17,7 +17,7 @@ SwapNShop.controller("detailsCtrl", [
     let rentalDatesObject = {};
     let curr_equipment_ID = EquipFactory.getEquipment();
     $scope.curMusicican = AuthFactory.getUser();
-    console.log('mIDDDDD', $scope.curMusicican.IdMusician);
+    console.log('currMusician', $scope.curMusicican);
     
     rentalDatesObject.IdEquipment = curr_equipment_ID;
     rentalDatesObject.IdMusician = $scope.curMusicican.IdMusician;
@@ -27,8 +27,12 @@ SwapNShop.controller("detailsCtrl", [
 			.get(`http://localhost:49881/api/Equipment?EquipmentID=${curr_equipment_ID}`)
 			.success(inv => {
 				$scope.equipment = inv[0];
+        // Set variables to compare for ng-if
+        $scope.MusicianID = $scope.curMusicican.IdMusician
+        $scope.EQMusicianID = $scope.equipment.musicianID
+        console.log("MusicianID", $scope.MusicianID);
+        console.log("EQMusicianID", $scope.EQMusicianID);
         console.log("equipment", $scope.equipment);
-				console.log("equipment", $scope.equipment.musicianID);
 			});
 		
     // post rental request to the database

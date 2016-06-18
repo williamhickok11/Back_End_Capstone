@@ -27,5 +27,26 @@ form .progress {
 }
 
 .individual_equipment img {
-	width: 100%;
+	height: 70px;
+    margin: 0 auto;
+}
+
+
+
+/*Details view*/
+.detials_img {
+    height: 200px;
+}
+
+/*Modal -- details view*/
+.modal-content {
+    padding-bottom: 0;
+}
+
+.datepicker{
+    margin-bottom: 0px;
+}
+
+.modal_img {
+    height: 60px;
 }
