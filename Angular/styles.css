@@ -83,3 +83,9 @@ form .progress {
 .modal_img {
     height: 60px;
 }
+
+
+/*Inventory View*/
+.react_btn {
+    margin-top: 23px;
+}

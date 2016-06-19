@@ -30,22 +30,25 @@
   <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-      	<h4>{{ equipment.name }}</h4>
-      	<p><img class="modal_img" ng-src="{{ equipment.picList[0].image }}" alt=""></p>
-      	<p>{{ equipment.description }}</p>
-		<div class="row">
-			<div class="col m6"><p>Select Checkout Day:</p></div>
-			<div class="col m6"><input class="datepicker" ng-model="rentalDates.check_OUT_date" type="date" min="2016-06-18"></div>
-		</div>
-		<div class="row">
-			<div class="col m6"><p>Select Checkin Day:</p></div>
-			<div class="col m6"><input class="datepicker" ng-model="rentalDates.check_IN_date" type="date" min="2016-06-18"></div>
-		</div>
-	    <div ng-if="EQMusicianID !== MusicianID" class="modal-footer">
-	      	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
-	    </div>
-	    <div ng-if="EQMusicianID === MusicianID" class="modal-footer">
-	      	<a href="/#/view_inventory"><button class=" modal-action modal-close waves-effect waves-green btn-flat">View Inventory</button></a>
-	    </div>
+      	<h4>{{ selectedEquipment.name }}</h4>
+      	<p><img class="modal_img" ng-src="{{ selectedEquipment.picList[0].image }}" alt=""></p>
+      	<!-- List of who want to rent it -->
+      	<h5>Rental Requests:</h5>
+      	<hr/>
+      	<div ng-if="rentalDates.length === 0"><p>no requests</p></div>
+      	<div ng-repeat="person in rentalDates">
+			<div class="row">
+				<div class="col m6">
+					<ul>
+						<a href=""><li>{{person.musician}}:</li></a>
+						<li>{{person.checkOutDates}} - {{person.checkInDates}}</li>
+					</ul>
+				</div>
+				<div class="col m3 react_btn"><a href=""><button>Confirm</button></a></div>
+				<div class="col m3 react_btn"><a href=""><button>Delete</button></a></div>
+			</div>
+			<hr/>
+      	</div>
+		
     </div>
 </div>

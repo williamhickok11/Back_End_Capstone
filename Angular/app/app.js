@@ -15,6 +15,10 @@ SwapNShop.config(["$routeProvider",
         templateUrl: "partials/homepage.html",
         controller: 'mainCtrl'
       }).
+      when("/user_page", {
+        templateUrl: "partials/user_page.html",
+        controller: 'userPageCtrl'
+      }).
       when("/add_equipment", {
         templateUrl: "partials/add_equipment.html",
         controller: 'addEquipmentCtrl'

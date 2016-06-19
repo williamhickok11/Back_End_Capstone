@@ -27,13 +27,15 @@ namespace SwapNShopApplication.Controllers
         public IActionResult Get([FromQuery]int? EquipmentID)
         {
             var rentalDates = from rd in _context.RentalDates
-                              select new RentalDates
+                              join m in _context.Musician
+                              on rd.IdMusician equals m.IdMusician
+                              select new
                               {
                                   IdRentalDates = rd.IdRentalDates,
                                   checkInDates = rd.checkInDates,
                                   checkOutDates = rd.checkOutDates,
                                   IdEquipment = rd.IdEquipment,
-                                  IdMusician = rd.IdMusician
+                                  musician = m.userName
                               };
 
             // Get all the rental dates for one piece of equipment
