@@ -5,8 +5,9 @@ SwapNShop.controller("viewInventoryCtrl", [
   "$http",
   "$location",
   "AuthFactory",
+  "SelectedUserFactory",
 
-  function ($scope, $http, $location, AuthFactory) {
+  function ($scope, $http, $location, AuthFactory, SelectedUserFactory) {
     $scope.equipment = [];
     $scope.selectedEquipment = {};
     let user = AuthFactory.getUser();
@@ -51,6 +52,10 @@ SwapNShop.controller("viewInventoryCtrl", [
 				$scope.equipment = inv;
 				console.log("equipment", $scope.equipment);
 			});
-			
+
+    $scope.goToPerson = function (id) {
+      SelectedUserFactory.setUserId(id)
+      $location.path("/user_page");
+    }
 	}
 ]);

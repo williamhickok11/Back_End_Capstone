@@ -35,6 +35,7 @@ namespace SwapNShopApplication.Controllers
                                   checkInDates = rd.checkInDates,
                                   checkOutDates = rd.checkOutDates,
                                   IdEquipment = rd.IdEquipment,
+                                  IdMusician = rd.IdMusician,
                                   musician = m.userName
                               };
 
