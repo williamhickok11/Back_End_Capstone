@@ -88,6 +88,9 @@ namespace SwapNShopApplication.Controllers
                 IdMusician = nfs.IdRecievingMusician,
                 IdNotification = newNotification.IdNotification,
             };
+            _context.NotificationList.Add(nfsList);
+            _context.SaveChanges();
+
             return Ok();
         }
 
