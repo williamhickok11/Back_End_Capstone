@@ -35,8 +35,15 @@ namespace SwapNShopApplication.Controllers
             var allNotifications = from n in _context.Notification
                                    join np in _context.NotificationList
                                    on n.IdNotification equals np.IdNotification
-                                   where np.IdRecievingMusician == id
-                                   select n;
+
+                                   join m in _context.Musician
+                                   on n.IdMusician equals m.IdMusician
+                                   where np.IdMusician == id
+                                   select new
+                                   {
+                                       description = n.description,
+                                       sender = m.userName
+                                   };
             return Ok(allNotifications);
         }
 
@@ -62,7 +69,7 @@ namespace SwapNShopApplication.Controllers
             Notification notification = new Notification
             {
                 description = nfs.description,
-                IdPostingMusician = nfs.IdPostingMusician,
+                IdMusician = nfs.IdPostingMusician,
             };
             _context.Notification.Add(notification);
             _context.SaveChanges();
@@ -72,13 +79,13 @@ namespace SwapNShopApplication.Controllers
                                             select new Notification
                                             {
                                                 IdNotification = n.IdNotification,
-                                                IdPostingMusician = n.IdPostingMusician,
+                                                IdMusician = n.IdMusician,
                                                 description = n.description
                                             }).Last();
             // Post the link between the notification and the reciepient
             NotificationList nfsList = new NotificationList
             {
-                IdRecievingMusician = nfs.IdRecievingMusician,
+                IdMusician = nfs.IdRecievingMusician,
                 IdNotification = newNotification.IdNotification,
             };
             return Ok();

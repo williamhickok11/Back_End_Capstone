@@ -9,14 +9,13 @@ SwapNShop.controller("notificationsCtrl", [
 
   	function ($scope, $http, $location, EquipFactory, AuthFactory) {
   		let currMusician = AuthFactory.getUser();
+  		$scope.allNotifications = [];
 
   		$http
-	        .get(`http://localhost:49881/api/Notifications/${currMusician.IdMusician}`)
+	        .get(`http://localhost:49881/api/Notification/${currMusician.IdMusician}`)
 	        .success(dates => {
-	          $scope.rentalDates = dates;
-	          console.log("rental Dates", $scope.rentalDates)
-	    }
+	          $scope.allNotifications = dates;
+	          console.log("notifications", $scope.allNotifications)
+	    })
   	} 
 ]);
-
-

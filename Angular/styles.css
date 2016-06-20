@@ -16,7 +16,7 @@ body {
 #side_bar button {
     width: 90%;
 }
-#equipment_list_col, #user_col, #notifications_col {
+#equipment_list_col, #user_col, #notifications_col{
     height: 708px;
     overflow: scroll;   
     float: right;
@@ -43,7 +43,7 @@ form .progress {
 }
 
 /*ALL equipment view*/
-.equipment_list_home, .user_profile, .create, .user_profile{
+.equipment_list_home, .user_profile, .create, .user_profile, .user_notifications{
     width: 1000px;
     margin: 0 auto;
 }
