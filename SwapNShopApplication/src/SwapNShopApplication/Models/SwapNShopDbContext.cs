@@ -20,5 +20,7 @@ namespace SwapNShopApplication.Models
         public DbSet<Picture> Picture { get; set; }
         public DbSet<PictureList> PictureList { get; set; }
         public DbSet<RentalDates> RentalDates { get; set; }
+        public DbSet<Notification> Notification { get; set; }
+        public DbSet<NotificationList> NotificationList { get; set; }
     }
 }

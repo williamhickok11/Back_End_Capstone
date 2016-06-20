@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace SwapNShopApplication.Models
 {
-    public class Notification
+    public class NotificationCreation
     {
-        public int IdNotification { get; set; }
         public int IdPostingMusician { get; set; }
-        public string description { get; set; }
+        public int IdRecievingMusician { get; set; }
+        public int description { get; set; }
+        public int IdNotification { get; set; }
     }
 }

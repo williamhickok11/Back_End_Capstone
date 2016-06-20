@@ -9,6 +9,6 @@ namespace SwapNShopApplication.Models
     {
         public int IdNotificationList { get; set; }
         public int IdNotification { get; set; }
-        public int IdMusician { get; set; }
+        public int IdRecievingMusician { get; set; }
     }
 }
