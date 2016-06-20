@@ -164,9 +164,9 @@ namespace SwapNShopApplication.Controllers
             return Ok();
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id)
+        // PUT api/values/5/1
+        [HttpPut("{id}/{adder}")]
+        public IActionResult Put(int id, int adder)
         {
             //, [FromBody]Equipment eq
             // Build out the piece of equipment by the id passed in
@@ -182,7 +182,7 @@ namespace SwapNShopApplication.Controllers
                             name = e.name,
                             IdMusician = e.IdMusician,
                             IdCategory = e.IdCategory,
-                            rentRequest = true
+                            rentalRequests = e.rentalRequests + adder
                         };
 
             var eq = newEQ.First();

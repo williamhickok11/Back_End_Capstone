@@ -69,7 +69,7 @@ namespace SwapNShopApplication.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] RentalDates rentaldates)
+        public IActionResult Post([FromBody] RentalDates rentalDates)
         {
             if (!ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace SwapNShopApplication.Controllers
             }
 
             // Add the new rental dates
-            _context.RentalDates.Add(rentaldates);
+            _context.RentalDates.Add(rentalDates);
             _context.SaveChanges();
 
             return Ok();
@@ -91,8 +91,16 @@ namespace SwapNShopApplication.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var rentalDates = from rd in _context.RentalDates
+                              where rd.IdRentalDates == id
+                              select rd;
+
+            _context.RentalDates.Remove(rentalDates.First());
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

@@ -57,5 +57,30 @@ SwapNShop.controller("viewInventoryCtrl", [
       SelectedUserFactory.setUserId(id)
       $location.path("/user_page");
     }
+
+
+    $scope.respontToRental = function (confirm, id) {
+      // Post that the equipment has been responded to
+        // $http({
+        //   url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.IdEquipment}/-1`,
+        //   method: 'PUT',
+        //   // data: JSON.stringify($scope.equipment)
+        // })
+        // .success(function newEquipment (){
+        //   console.log('201 updated')
+        // })
+
+        if (confirm === true) {
+          //Notify the rent request user that you have confirmed the rental
+        } else {
+          //Notify the rent request user that you have denied the rental
+          console.log("DELETE ID", id)
+          //Delete the request
+          $http({
+            url:`http://localhost:49881/api/RentalDates/${id}`,
+            method: 'DELETE',
+          })
+        }
+    }
 	}
 ]);

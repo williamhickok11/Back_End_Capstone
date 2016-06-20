@@ -60,7 +60,7 @@ SwapNShop.controller("detailsCtrl", [
 
       // Post that the equipment has been requested to be rented
       $http({
-        url:`http://localhost:49881/api/Equipment/${curr_equipment_ID}`,
+        url:`http://localhost:49881/api/Equipment/${curr_equipment_ID}/1`,
         method: 'PUT',
         // data: JSON.stringify($scope.equipment)
       })
