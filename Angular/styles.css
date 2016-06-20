@@ -43,7 +43,7 @@ form .progress {
 }
 
 /*ALL equipment view*/
-.equipment_list_home, .user_profile{
+.equipment_list_home, .user_profile, .create{
     width: 900px;
     margin: 0 auto;
 }

@@ -1,0 +1,26 @@
+<article class="user_profile">
+
+	<div class="col m3" id="side_bar">
+		<div><a href="/#/add_equipment"><button id="add_equipment">Add equipment to rent</button></a></div>
+		<div><a href="/#/view_inventory"><button id="view_inventory">View your equipment</button></a></div>
+		<div><a href="/#/profile"><button id="view_profile">Profile</button></a></div>
+	</div>
+
+	<div id="user_col" class="col m9">
+		<section ng-model="currUser">
+			<header><h1>{{currUser.userName}}'s Profile:</h1></header>
+			<div class="container">
+			  	<h5>City: {{currUser.city}}, {{currUser.state}}</h5>
+			  	<h5>About: {{currUser.description}}</h5>
+			  	<h5>Rating: {{currUser.rating}}</h5>
+			  	<button ng-if="currUser.IdMusician === currcurrUserId">Edit</button>
+		  	</div>
+		  	<div id="edit_user" class="container hidden">
+			  	<input type="text">City: {{currUser.city}}
+			  	<input type="text">State: {{currUser.state}}
+			  	<input type="text">About: {{currUser.description}}
+			  	<input type="text">UserName: {{currUser.userName}}
+		  	</div>
+		</section>
+	</div>
+</article>
