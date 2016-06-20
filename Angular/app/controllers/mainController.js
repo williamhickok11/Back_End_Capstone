@@ -10,7 +10,7 @@ SwapNShop.controller("mainCtrl", [
   function ($scope, $http, $location, EquipFactory, AuthFactory) {
   	$scope.equipment = [];
   	let currMusician = AuthFactory.getUser();
-  	// console.log(currMusician);
+  	console.log(currMusician);
 
   	$scope.detailsView = function(equID){
   		console.log("equID", equID);

@@ -67,14 +67,33 @@ namespace SwapNShopApplication.Controllers
                 return BadRequest(ModelState);
             }
 
-            Musician m = _context.Musician.Single(e => e.IdMusician == id);
+            IQueryable<object> selectedUser = from user in _context.Musician
+                                              where user.IdMusician == id
+                                              select new
+                                              {
+                                                  IdMusician = user.IdMusician,
+                                                  userName = user.userName,
+                                                  email = user.email,
+                                                  city = user.city,
+                                                  state = user.state,
+                                                  rating = user.rating,
+                                                  description = user.description,
+                                                  comments = from cl in _context.CommentList
+                                                             join c in _context.Comment
+                                                             on cl.IdComment equals c.IdComment
+                                                             select new Comment
+                                                             {
+                                                                 date = c.date,
+                                                                 message = c.message
+                                                             }
+                                              };
 
-            if (m == null)
+            if (selectedUser == null)
             {
                 return NotFound();
             }
 
-            return Ok(m);
+            return Ok(selectedUser);
         }
 
         // POST api/values
