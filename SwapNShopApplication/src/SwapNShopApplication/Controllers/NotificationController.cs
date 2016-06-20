@@ -32,12 +32,17 @@ namespace SwapNShopApplication.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok();
+            var allNotifications = from n in _context.Notification
+                                   join np in _context.NotificationList
+                                   on n.IdNotification equals np.IdNotification
+                                   where np.IdRecievingMusician == id
+                                   select n;
+            return Ok(allNotifications);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]NotificationCreation nfs, string requestType)
+        public IActionResult Post([FromBody]NotificationCreation nfs)
         {
             //Get a reference to the user who has posted a request or
             var posterUserName = from m in _context.Musician
@@ -54,20 +59,13 @@ namespace SwapNShopApplication.Controllers
                                    };
 
             //Post the notification
-            Notification notification = new Notification();
-            notification.IdPostingMusician = nfs.IdPostingMusician;
-            if (requestType == "deny")
+            Notification notification = new Notification
             {
-                notification.description = "Your rental request has been denied";
-            }
-            else if (requestType == "accept")
-            {
-                notification.description = "Your rental request has been accepted";
-            }
-            else if (requestType == "request")
-            {
-                notification.description = "Your equipment has been requested to be rented";
-            }
+                description = nfs.description,
+                IdPostingMusician = nfs.IdPostingMusician,
+            };
+            _context.Notification.Add(notification);
+            _context.SaveChanges();
 
             // Get access to the notification you just posted
             Notification newNotification = (from n in _context.Notification

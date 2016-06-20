@@ -58,28 +58,52 @@ SwapNShop.controller("viewInventoryCtrl", [
       $location.path("/user_page");
     }
 
-
-    $scope.respontToRental = function (confirm, id) {
+    $scope.respontToRental = function (confirm, id, recievingMusicianId) {
       // Post that the equipment has been responded to
-        $http({
-          url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.id}/-1`,
-          method: 'PUT',
-          // data: JSON.stringify($scope.equipment)
-        })
-        .success(function newEquipment (){
-          console.log('201 updated')
-          if (confirm === true) {
-            //Notify the rent request user that you have confirmed the rental
-          } else {
-            //Notify the rent request user that you have denied the rental
-            console.log("DELETE ID", id)
-            //Delete the request
+      $http({
+        url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.id}/-1`,
+        method: 'PUT',
+        // data: JSON.stringify($scope.equipment)
+      })
+      .success(function newEquipment (){
+        console.log('201 updated')
+        if (confirm === true) {
+          //Notify the rent request user that you have confirmed the rental
+          let notificationCreation = {
+              IdPostingMusician : user.IdMusician,
+              IdRecievingMusician : recievingMusicianId,
+              description : `${user.userName} has accepted your rental request`,
+            }
+            // Post a deny request notification
             $http({
-              url:`http://localhost:49881/api/RentalDates/${id}`,
-              method: 'DELETE',
+              url:'http://localhost:49881/api/Notification',
+              method: 'POST',
+              data: JSON.stringify(notificationCreation)
             })
-          }
-        })
-      }
+
+        } else {
+          //Notify the rent request user that you have denied the rental
+          console.log("DELETE ID", id)
+          //Delete the request
+          $http({
+            url:`http://localhost:49881/api/RentalDates/${id}`,
+            method: 'DELETE',
+          })
+          .success(function postNotification (){
+            let notificationCreation = {
+              IdPostingMusician : user.IdMusician,
+              IdRecievingMusician : recievingMusicianId,
+              description : `${user.userName} has denied your rental request`,
+            }
+            // Post a deny request notification
+            $http({
+              url:'http://localhost:49881/api/Notification',
+              method: 'POST',
+              data: JSON.stringify(notificationCreation)
+            })
+          })
+        }
+      })
+    }
 	}
 ]);
