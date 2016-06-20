@@ -41,11 +41,10 @@ SwapNShop.controller("viewInventoryCtrl", [
       .success(curEqu => {
         $scope.selectedEquipment = curEqu[0];
         console.log('selectedEquipment', $scope.selectedEquipment)
-        //Display the modal
-        $('.modal-trigger').leanModal();
       });
     }
   	
+    // Get the equipment for the user that is loged in
 		$http
 			.get(`http://localhost:49881/api/Equipment?MusicianID=${curr_musician_ID}`)
 			.success(inv => {
@@ -53,6 +52,7 @@ SwapNShop.controller("viewInventoryCtrl", [
 				console.log("equipment", $scope.equipment);
 			});
 
+    // View the page of the user you clicked on
     $scope.goToPerson = function (id) {
       SelectedUserFactory.setUserId(id)
       $location.path("/user_page");
@@ -61,26 +61,25 @@ SwapNShop.controller("viewInventoryCtrl", [
 
     $scope.respontToRental = function (confirm, id) {
       // Post that the equipment has been responded to
-        // $http({
-        //   url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.IdEquipment}/-1`,
-        //   method: 'PUT',
-        //   // data: JSON.stringify($scope.equipment)
-        // })
-        // .success(function newEquipment (){
-        //   console.log('201 updated')
-        // })
-
-        if (confirm === true) {
-          //Notify the rent request user that you have confirmed the rental
-        } else {
-          //Notify the rent request user that you have denied the rental
-          console.log("DELETE ID", id)
-          //Delete the request
-          $http({
-            url:`http://localhost:49881/api/RentalDates/${id}`,
-            method: 'DELETE',
-          })
-        }
-    }
+        $http({
+          url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.id}/-1`,
+          method: 'PUT',
+          // data: JSON.stringify($scope.equipment)
+        })
+        .success(function newEquipment (){
+          console.log('201 updated')
+          if (confirm === true) {
+            //Notify the rent request user that you have confirmed the rental
+          } else {
+            //Notify the rent request user that you have denied the rental
+            console.log("DELETE ID", id)
+            //Delete the request
+            $http({
+              url:`http://localhost:49881/api/RentalDates/${id}`,
+              method: 'DELETE',
+            })
+          }
+        })
+      }
 	}
 ]);
