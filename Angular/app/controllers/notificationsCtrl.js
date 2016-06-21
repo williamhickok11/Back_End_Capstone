@@ -16,6 +16,17 @@ SwapNShop.controller("notificationsCtrl", [
 	        .success(dates => {
 	          $scope.allNotifications = dates;
 	          console.log("notifications", $scope.allNotifications)
-	    })
+	    	})
+
+	    $scope.gotIt = function(id) {
+	    	// Remove the notification from the page
+	    	console.log("this.$parent",this.$parent)
+	    	$(this).remove();
+	    	// Delete the notification from the database
+		    $http({
+	            url:`http://localhost:49881/api/Notification/${id}`,
+	            method: 'DELETE',
+	          })
+	    }
   	} 
 ]);

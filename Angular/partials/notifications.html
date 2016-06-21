@@ -15,6 +15,10 @@
 					<div class="row">
 						<h3>From: {{note.sender}}</h3>
 						<h5>--{{note.description}}</h5>
+						<!-- hidden from to access the notification when deleting -->
+						<input type="hidden" value="{{note.ID}}">
+						<button ng-click="gotIt()" ng-if="note.newRentalRequest === true">got it</button>
+						<button ng-click="viewInventory()" ng-if="note.newRentalRequest === false">view inventory</button>
 					</div>
 					<hr/>
 			  	</div>

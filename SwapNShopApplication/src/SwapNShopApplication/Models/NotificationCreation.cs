@@ -11,5 +11,6 @@ namespace SwapNShopApplication.Models
         public int IdRecievingMusician { get; set; }
         public string description { get; set; }
         public int IdNotification { get; set; }
+        public bool newRentalRequest { get; set; }
     }
 }
