@@ -114,35 +114,66 @@ namespace SwapNShopApplication.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{id}/{rentalRequest}")]
+        public IActionResult Delete(int id, bool rentalRequest)
         {
-            // Delete the notelist
-            var nList = from nl in _context.NotificationList
-                        where nl.IdNotification == id
-                        select new NotificationList
-                        {
-                            IdNotificationList = nl.IdNotificationList,
-                            IdMusician = nl.IdMusician,
-                            IdNotification = nl.IdNotification
-                        };
-            var noteList = nList.First();
-            _context.NotificationList.Remove(noteList);
-            _context.SaveChanges();
+            // Delete the notification based on the rentalRequest and reciever id
+            if (rentalRequest == true)
+            {
+                var rentalRequestNote = from n in _context.Notification
+                                        where n.IdMusician == id && n.newRentalRequest == true
+                                        select new Notification
+                                        {
+                                            IdMusician = n.IdMusician,
+                                            IdNotification = n.IdNotification,
+                                            description = n.description,
+                                            newRentalRequest = n.newRentalRequest
+                                        };
+                var RRnote = rentalRequestNote.First();
 
-            // Delete the note
-            var notification = from n in _context.Notification
-                               where n.IdNotification == id
-                               select new Notification
+                var noteList = from nl in _context.NotificationList
+                               where nl.IdNotification == RRnote.IdNotification
+                               select new NotificationList
                                {
-                                   IdNotification = n.IdNotification,
-                                   IdMusician = n.IdMusician,
-                                   description = n.description,
-                                   newRentalRequest = n.newRentalRequest
+                                   IdMusician = nl.IdMusician,
+                                   IdNotification = nl.IdNotification,
+                                   IdNotificationList = nl.IdNotificationList
                                };
-            var note = notification.First();
-            _context.Notification.Remove(note);
-            _context.SaveChanges();
+                var RRnoteList = noteList.First();
+
+                _context.NotificationList.Remove(RRnoteList);
+                _context.SaveChanges();
+                _context.Notification.Remove(RRnote);
+                _context.SaveChanges();
+            } else
+            {
+                // Delete the notelist based off the note id
+                var nList = from nl in _context.NotificationList
+                            where nl.IdNotification == id
+                            select new NotificationList
+                            {
+                                IdNotificationList = nl.IdNotificationList,
+                                IdMusician = nl.IdMusician,
+                                IdNotification = nl.IdNotification
+                            };
+                var noteList = nList.First();
+                _context.NotificationList.Remove(noteList);
+                _context.SaveChanges();
+
+                // Delete the note
+                var notification = from n in _context.Notification
+                                   where n.IdNotification == id
+                                   select new Notification
+                                   {
+                                       IdNotification = n.IdNotification,
+                                       IdMusician = n.IdMusician,
+                                       description = n.description,
+                                       newRentalRequest = n.newRentalRequest
+                                   };
+                var note = notification.First();
+                _context.Notification.Remove(note);
+                _context.SaveChanges();
+            }
 
             return Ok();
         }

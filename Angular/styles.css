@@ -12,11 +12,11 @@ body {
     background: grey;
     padding-bottom: 0;
     margin-bottom: 0;
+    /*width: 90%;*/
 }
-#side_bar button {
-    width: 90%;
-}
-#equipment_list_col, #user_col, #notifications_col{
+    
+.main_container {
+    padding: 0 10px;
     height: 708px;
     overflow: scroll;   
     float: right;
@@ -26,7 +26,6 @@ body {
     width: 750px;
     /*vertical-align: top;*/
 	background: white;
-    padding-bottom: 0;
     margin-bottom: 0;
 }
 
@@ -43,16 +42,28 @@ form .progress {
 }
 
 /*ALL equipment view*/
-.equipment_list_home, .user_profile, .create, .user_profile, .user_notifications{
+.full_container{
     width: 1000px;
     margin: 0 auto;
 }
 
+.container {
+    width: 100%;
+    margin: 0;
+}
+.row {
+    width: 100%;
+    margin: 0;
+    padding-left: 25px;
+    padding-right: 10px;
+}
+
 .individual_equipment {
-    box-sizing: border-box;
-	width: 30%;
+    /*box-sizing: border-box;*/
+	/*width: 30%;*/
 	border: 2px solid black;
-	margin: 10px 5px;
+	/*margin: 2px 2px;*/
+    height: 200px;
 }
 
 .individual_equipment:hover {
@@ -69,6 +80,16 @@ form .progress {
 /*Details view*/
 .detials_img {
     height: 200px;
+}
+
+.musician_on_equ_page {
+    margin-top: 0;
+    color:white;
+    background: blue;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
 }
 
 /*Modal -- details view*/

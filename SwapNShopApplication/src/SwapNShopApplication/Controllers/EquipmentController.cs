@@ -169,7 +169,6 @@ namespace SwapNShopApplication.Controllers
         [HttpPut("{id}/{adder}")]
         public IActionResult Put(int id, int adder)
         {
-            //, [FromBody]Equipment eq
             // Build out the piece of equipment by the id passed in
             // This will declare that the equipment has been requested to rent
             var newEQ = from e in _context.Equipment

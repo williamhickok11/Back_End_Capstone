@@ -138,10 +138,29 @@ namespace SwapNShopApplication.Controllers
 
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody] Musician updatedMusician)
         {
+            // Build out the updatedMusician by the id passed in
+            var musicianToSave = from m in _context.Musician
+                                 where m.IdMusician == id
+                                 select new Musician
+                                 {
+                                     IdMusician = m.IdMusician,
+                                     rating = m.rating,
+                                     description = updatedMusician.description,
+                                     city = updatedMusician.city,
+                                     state = updatedMusician.state,
+                                     email = updatedMusician.email,
+                                     userName = updatedMusician.userName
+                                 };
+
+            var newMusician = musicianToSave.First();
+            _context.Musician.Attach(newMusician);
+            _context.Entry(newMusician).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         // DELETE api/values/5

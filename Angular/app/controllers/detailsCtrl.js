@@ -6,8 +6,9 @@ SwapNShop.controller("detailsCtrl", [
   "$location",
   "EquipFactory",
   "AuthFactory",
+  "SelectedUserFactory",
 
-  function ($scope, $http, $location, EquipFactory, AuthFactory) {
+  function ($scope, $http, $location, EquipFactory, AuthFactory, SelectedUserFactory) {
 
     // Activate modal for rental
     $('.modal-trigger').leanModal();
@@ -82,6 +83,11 @@ SwapNShop.controller("detailsCtrl", [
         data: JSON.stringify(notificationCreation)
       })
     }
+
+    $scope.goToPerson = function (id) {
+        SelectedUserFactory.setUserId(id)
+        $location.path("/user_page");
+      }
 	}
 ]);
 

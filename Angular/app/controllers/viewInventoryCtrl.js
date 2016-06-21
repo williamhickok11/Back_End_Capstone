@@ -10,6 +10,7 @@ SwapNShop.controller("viewInventoryCtrl", [
   function ($scope, $http, $location, AuthFactory, SelectedUserFactory) {
     $scope.equipment = [];
     $scope.selectedEquipment = {};
+    $scope.rentalDates = [];
     let user = AuthFactory.getUser();
     console.log('user', user.IdMusician)
     var curr_musician_ID = parseInt(user.IdMusician);
@@ -58,7 +59,17 @@ SwapNShop.controller("viewInventoryCtrl", [
       $location.path("/user_page");
     }
 
+    let deleteRentalRequestNote = function(recievingMusicianId) {
+      console.log("recievingMusicianId", recievingMusicianId)
+      $http({
+        url:`http://localhost:49881/api/Notification/${recievingMusicianId}/true`,
+        method: 'DELETE',
+      })
+    }
+
     $scope.respontToRental = function (confirm, id, recievingMusicianId) {
+      let itemToDelete = this.person;
+      $scope.rentalDates.splice($scope.rentalDates.indexOf(itemToDelete), 1);
       // Post that the equipment has been responded to
       $http({
         url:`http://localhost:49881/api/Equipment/${$scope.selectedEquipment.id}/-1`,
@@ -80,6 +91,10 @@ SwapNShop.controller("viewInventoryCtrl", [
               method: 'POST',
               data: JSON.stringify(notificationCreation)
             })
+            .then(function() {
+              //Remove the rental requst notification
+              deleteRentalRequestNote(recievingMusicianId);
+            })
 
         } else {
           //Notify the rent request user that you have denied the rental
@@ -100,6 +115,10 @@ SwapNShop.controller("viewInventoryCtrl", [
               url:'http://localhost:49881/api/Notification',
               method: 'POST',
               data: JSON.stringify(notificationCreation)
+            })
+            .then(function() {
+              //Remove the rental requst notification
+              deleteRentalRequestNote(recievingMusicianId);
             })
           })
         }
