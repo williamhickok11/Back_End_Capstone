@@ -90,6 +90,10 @@ form .progress {
     margin-top: 23px;
 }
 
+.material-icons {
+    margin-left: -15px;
+}
+
 .go_to_person {
     cursor: pointer;
 }

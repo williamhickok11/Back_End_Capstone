@@ -52,6 +52,7 @@ namespace SwapNShopApplication.Controllers
                                                           category = c.title,
                                                           musician = m.userName,
                                                           musicianID = m.IdMusician,
+                                                          rentalRequests = e.rentalRequests,
                                                           picList = from pl in _context.PictureList
                                                                     join eq in _context.Equipment
                                                                     on pl.IdEquipment equals eq.IdEquipment

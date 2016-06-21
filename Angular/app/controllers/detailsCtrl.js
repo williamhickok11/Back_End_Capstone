@@ -36,7 +36,7 @@ SwapNShop.controller("detailsCtrl", [
 			});
 		
     // post rental request to the database
-    $scope.requestRent = function () {
+    $scope.requestRent = function (ownerID) {
       console.log("rent", $scope.rentalDates)
 
       var dateOUT = $scope.rentalDates.check_OUT_date.toISOString().slice(0, 19).replace('T', ' ').replace(/-/g, '/');
@@ -66,7 +66,21 @@ SwapNShop.controller("detailsCtrl", [
       })
       .success(function newEquipment (){
         console.log('201 updated')
-      })	
+      })
+
+      // Post a new notification for the owner to see that the equipment has been requested
+      let notificationCreation = {
+        IdPostingMusician : $scope.curMusicican.IdMusician,
+        IdRecievingMusician : ownerID,
+        newRentalRequest : true,
+        description : `${$scope.curMusicican.userName} sent you a rental request`,
+      }
+      // Post a deny request notification
+      $http({
+        url:'http://localhost:49881/api/Notification',
+        method: 'POST',
+        data: JSON.stringify(notificationCreation)
+      })
     }
 	}
 ]);

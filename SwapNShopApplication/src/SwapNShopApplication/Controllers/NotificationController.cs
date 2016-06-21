@@ -72,6 +72,7 @@ namespace SwapNShopApplication.Controllers
             {
                 description = nfs.description,
                 IdMusician = nfs.IdPostingMusician,
+                newRentalRequest = nfs.newRentalRequest
             };
             _context.Notification.Add(notification);
             _context.SaveChanges();
@@ -82,17 +83,18 @@ namespace SwapNShopApplication.Controllers
                                             {
                                                 IdNotification = n.IdNotification,
                                                 IdMusician = n.IdMusician,
-                                                description = n.description
+                                                description = n.description,
+                                                newRentalRequest = n.newRentalRequest
                                             }).Last();
             //Check to see if this is a new rental request for the front end to handle
-            if (nfs.description.Contains("requested"))
-            {
-                newNotification.newRentalRequest = true;
+            //if (nfs.description.Contains("requested"))
+            //{
+            //    newNotification.newRentalRequest = true;
 
-            } else
-            {
-                newNotification.newRentalRequest = false;
-            }
+            //} else
+            //{
+            //    newNotification.newRentalRequest = false;
+            //}
             // Post the link between the notification and the reciepient
             NotificationList nfsList = new NotificationList
             {
@@ -115,6 +117,19 @@ namespace SwapNShopApplication.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            // Delete the notelist
+            var nList = from nl in _context.NotificationList
+                        where nl.IdNotification == id
+                        select new NotificationList
+                        {
+                            IdNotificationList = nl.IdNotificationList,
+                            IdMusician = nl.IdMusician,
+                            IdNotification = nl.IdNotification
+                        };
+            var noteList = nList.First();
+            _context.NotificationList.Remove(noteList);
+            _context.SaveChanges();
+
             // Delete the note
             var notification = from n in _context.Notification
                                where n.IdNotification == id
@@ -126,19 +141,6 @@ namespace SwapNShopApplication.Controllers
                                    newRentalRequest = n.newRentalRequest
                                };
             var note = notification.First();
-            _context.Notification.Remove(note);
-            _context.SaveChanges();
-
-            // Delete the notelist
-            var nList = from nl in _context.NotificationList
-                        where nl.IdNotification == id
-                        select new NotificationList
-                        {
-                            IdNotificationList = nl.IdNotificationList,
-                            IdMusician = nl.IdMusician,
-                            IdNotification = nl.IdNotification
-                        };
-            var noteList = nList.First();
             _context.Notification.Remove(note);
             _context.SaveChanges();
 

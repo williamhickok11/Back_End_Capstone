@@ -15,6 +15,7 @@ namespace SwapNShopApplication.Models
         public string category { get; set; }
         public string musician { get; set; }
         public int musicianID { get; set; }
+        public int rentalRequests { get; set; }
         public IQueryable<Picture> picList { get; set; }
     }
 }

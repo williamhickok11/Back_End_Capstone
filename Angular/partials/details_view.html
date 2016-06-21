@@ -38,7 +38,7 @@
 			<div class="col m6"><input class="datepicker" ng-model="rentalDates.check_IN_date" type="date" min="2016-06-18"></div>
 		</div>
 	    <div ng-if="EQMusicianID !== MusicianID" class="modal-footer">
-	      	<button ng-click="requestRent()" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
+	      	<button ng-click="requestRent(equipment.musicianID)" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit Rental Request</button>
 	    </div>
 	    <div ng-if="EQMusicianID === MusicianID" class="modal-footer">
 	      	<a href="/#/view_inventory"><button class=" modal-action modal-close waves-effect waves-green btn-flat">View Inventory</button></a>

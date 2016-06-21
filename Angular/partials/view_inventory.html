@@ -14,6 +14,7 @@
 
 				  <div ng-repeat="item in equipment">
 				  	<div ng-click="showModal(item.id)" href="#modal1" class="col m3 individual_equipment modal-trigger">
+				  		<i ng-if="(item.rentalRequests > 0) == true" class="material-icons">error</i>
 				  		<p>{{ item.name }}</p>
 				  		<p><img ng-src="{{ item.picList[0].image }}" alt=""></p>
 				  		<p>{{ item.Musician }}</p>
