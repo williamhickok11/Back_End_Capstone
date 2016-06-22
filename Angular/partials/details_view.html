@@ -12,7 +12,12 @@
 			<header><h1>{{ equipment.name }}</h1></header>
 		  	<div class="col m3">
 		  		<p class="musician_on_equ_page" ng-click="goToPerson(equipment.musicianID)">{{ equipment.musician }}</p>
-		  		<p><img class="detials_img" ng-click="showImgModal()" ng-src="{{ equipment.picList[0].image }}" alt=""></p>
+		  		<img ng-model="currImage" class="detials_img" ng-click="showImgModal()" ng-src="{{ currImage }}" alt="">
+		  		<div class="row">
+		  			<div class="thumb_nail_img_div" ng-repeat="pic in equipment.picList">
+		  				<img class="thumb_nail_img" ng-click="displayImg(pic.image)" ng-src="{{ pic.image }}" alt="">
+		  			</div>
+		  		</div>
 		  		<p>{{ equipment.description }}</p>
 		  		 	<!-- Modal Trigger -->
 					<button class="waves-effect waves-light btn modal-trigger" href="#modal1">Rent Request</button>

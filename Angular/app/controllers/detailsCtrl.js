@@ -17,6 +17,7 @@ SwapNShop.controller("detailsCtrl", [
     $scope.rentalDates;
     $scope.equipment;
     let rentalDatesObject = {};
+    $scope.currImage;
     let curr_equipment_ID = EquipFactory.getEquipment();
     console.log('currMusician', $scope.curMusicican);
     
@@ -31,10 +32,16 @@ SwapNShop.controller("detailsCtrl", [
         // Set variables to compare for ng-if
         $scope.MusicianID = $scope.curMusicican.IdMusician
         $scope.EQMusicianID = $scope.equipment.musicianID
+        $scope.currImage = $scope.equipment.picList[0].image
         console.log("MusicianID", $scope.MusicianID);
         console.log("EQMusicianID", $scope.EQMusicianID);
         console.log("equipment", $scope.equipment);
 			});
+
+    // thumbnail image click to make it the main image
+    $scope.displayImg = function(img){
+      $scope.currImage = img;
+    }
 		
     // post rental request to the database
     $scope.requestRent = function (ownerID) {
@@ -46,6 +53,7 @@ SwapNShop.controller("detailsCtrl", [
       // Build out the object to send to the database
       rentalDatesObject.checkOutDates = dateOUT;
       rentalDatesObject.checkInDates = dateIN;
+      rentalDatesObject.confirmed = false;
       
       console.log("rentalDatesObject", rentalDatesObject)
       // post to the database

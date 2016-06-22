@@ -44,6 +44,20 @@ SwapNShop.controller("viewInventoryCtrl", [
         console.log('selectedEquipment', $scope.selectedEquipment)
       });
     }
+
+    $http
+      .get(`http://localhost:49881/api/RentalDates?MusicianID=${currMusician.IdMusician}`)
+      .success(dates => {
+        $scope.confirmedRentalDates = dates;
+        console.log("rental Dates", $scope.confirmedRentalDates)
+        //Split all the dates into readable dates
+        for (var i = 0; i < $scope.confirmedRentalDates.length; i++) {
+            var checkInDates = $scope.confirmedRentalDates[i].checkInDates.split(/\-|\T/)
+            $scope.confirmedRentalDates[i].checkInDates = checkInDates[1] + "/" + checkInDates[2] + "/" + checkInDates[0];
+            var checkOutDates = $scope.confirmedRentalDates[i].checkOutDates.split(/\-|\T/)
+            $scope.confirmedRentalDates[i].checkOutDates = checkOutDates[1] + "/" + checkOutDates[2] + "/" + checkOutDates[0];
+        }
+      })
   	
     // Get the equipment for the user that is loged in
 		$http
@@ -79,6 +93,11 @@ SwapNShop.controller("viewInventoryCtrl", [
       .success(function newEquipment (){
         console.log('201 updated')
         if (confirm === true) {
+          //Update the rental request database object to be confirmed=true
+          $http({
+              url:`http://localhost:49881/api/RentalDates/${id}`,
+              method: 'PUT',
+            })
           //Notify the rent request user that you have confirmed the rental
           let notificationCreation = {
               IdPostingMusician : user.IdMusician,

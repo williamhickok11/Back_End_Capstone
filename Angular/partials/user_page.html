@@ -21,18 +21,22 @@
 			<div class="message" ng-repeat="comm in allComments">
 				<p class="message_p">{{ comm.date }}</p>
 				<p class="message_p">{{ comm.message }}</p>
-				<p ng-click="goToPerson(comm.SenderId)" class="message_p">{{ comm.sender }}</p>
+				<p ng-click="goToPerson(comm.SenderId)" class="message_p musician_on_equ_page">{{ comm.sender }}</p>
 			</div>
 		</section>
 		<hr>
 		<hr>
 		<section class="add_comment">
 			<h4>Leave A Comment:</h4>
-			<div class="input-field col s12 message_div">
-	            <input ng-model="newComment.message" id="message" type="text">
-	            <label for="message">message</label>
+			<div class="input-field row message_div">
+	            <div class="col m9">
+		            <input ng-model="newComment.message" id="message" type="text">
+		            <label for="message">message</label>
+	            </div>
+	            <div class="col m3">
+	        		<button ng-click="leaveAComment()" class="waves-effect waves-light btn">sumbit</button>
+	            </div>
 	        </div>
-	        <button ng-click="leaveAComment()" class="waves-effect waves-light btn">sumbit</button>
 		</section>
 	</div>
 </article>

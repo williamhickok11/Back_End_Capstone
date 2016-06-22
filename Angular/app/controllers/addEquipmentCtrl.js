@@ -7,7 +7,6 @@ SwapNShop.controller("addEquipmentCtrl", [
   'Upload',
   '$timeout',
   '$location',
-  // 'ngFileUpload',
 
   function ($scope, $http, AuthFactory, Upload, $timeout, $location) {
   	let currMusician = AuthFactory.getUser();
@@ -80,7 +79,7 @@ SwapNShop.controller("addEquipmentCtrl", [
 			})
 			.success(function newEquipment (){
 				console.log('201 Created', newEquipment)
-				$location.path("/homepage");
+				$location.path("/view_inventory");
 			})
 		};
 

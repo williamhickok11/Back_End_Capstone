@@ -14,6 +14,7 @@ namespace SwapNShopApplication.Models
         public int IdMusician { get; set; }
         public DateTime checkOutDates { get; set; }
         public DateTime checkInDates { get; set; }
+        public bool confirmed { get; set; }
 
         //public Equipment Equipment { get; set; }
         //public Musician Musician { get; set; }

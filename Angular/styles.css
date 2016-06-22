@@ -100,25 +100,40 @@ form .progress {
     margin: 0 auto;
     /*max-width: 100px;*/
 }
+.equ_info{
+    height: 230px; 
+}
 .equ_img {
     /*margin: 0 auto;*/
     text-align: center;
 }
 
-
 /*Details view*/
 .detials_img {
-    height: 200px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.thumb_nail_img_div{
+    float:left;
+    margin-right: 7px;
+}
+
+.thumb_nail_img {
+    height: 35px;
+    border: 1px solid black;
+    cursor: pointer;
 }
 
 .musician_on_equ_page {
     margin-top: 0;
     color:white;
-    background: blue;
+    background: lightblue;
     border-radius: 5px;
     width: 150px;
     text-align: center;
     cursor: pointer;
+    padding: 3px 0;
 }
 
 /*Modal -- details view*/
@@ -169,6 +184,9 @@ form .progress {
     background-color: lightgrey;
     /*height: 0px;*/
     /*padding-top: 60px;*/
+}
+.message_div button {
+    margin-top: 15px
 }
 .message_p {
     margin-top: 0;
