@@ -1,9 +1,10 @@
 <article class="full_container">
 	<div class="col m3" id="side_bar">
-		<div><a href="/#/add_equipment"><button id="add_equipment">Add equipment to rent</button></a></div>
-		<div><a href="/#/view_inventory"><button id="view_inventory">View your equipment</button></a></div>
-		<div><a href="/#/profile"><button id="view_profile">Profile</button></a></div>
-		<div><a href="/#/notifications"><button id="view_profile">Notifications</button></a></div>
+		<div><a href="/#/homepage"><button class="waves-effect waves-light btn" id="view_profile">All Equipment</button></a></div>
+		<div><a href="/#/add_equipment"><button class="waves-effect waves-light btn" id="add_equipment">Add equipment to rent</button></a></div>
+		<div><a href="/#/view_inventory"><button class="waves-effect waves-light btn" id="view_inventory">Your equipment</button></a></div>
+		<div><a href="/#/profile"><button class="waves-effect waves-light btn" id="view_profile">Profile</button></a></div>
+		<div><a href="/#/notifications"><button class="waves-effect waves-light btn" id="view_profile">Notifications</button></a></div>
 	</div>
 
 	<div class="col m9 main_container">
@@ -14,14 +15,14 @@
 			  	<h5>About: {{currUser.description}}</h5>
 			  	<h5>Rating: {{currUser.rating}}</h5>
 		  	</div>
-		  	<button ng-click="hideEdit = !hideEdit">edit profile</button>
+		  	<button class="mybutton waves-effect waves-light btn" ng-click="hideEdit = !hideEdit">edit profile</button>
 		  	<div id="edit_user" ng-show="hideEdit" class="container hidden">
 			  	UserName:<input ng-model="currUser.userName" type="text">
 			  	UserName:<input ng-model="currUser.email" type="text">
 			  	City:<input ng-model="currUser.city" type="text">
 			  	State:<input ng-model="currUser.state" type="text">
 			  	About:<input ng-model="currUser.description" type="text">
-			  	<button ng-click="saveChanges(); hideEdit = !hideEdit">save changes</button>
+			  	<button class="mybutton waves-effect waves-light btn" ng-click="saveChanges(); hideEdit = !hideEdit">save changes</button>
 		  	</div>
 		</section>
 	</div>

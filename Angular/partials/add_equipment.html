@@ -1,60 +1,70 @@
-<div>
-	<label for="name">Name of equipment</label>
-	<input type="text" name="name" ng-model="equipment.name">
-</div>
+<article class="full_container">
+    <div class="col m3" id="side_bar">
+        <div><a href="/#/homepage"><button class="waves-effect waves-light btn" id="view_profile">All Equipment</button></a></div>
+        <div><a href="/#/add_equipment"><button class="waves-effect waves-light btn" id="add_equipment">Add equipment to rent</button></a></div>
+        <div><a href="/#/view_inventory"><button class="waves-effect waves-light btn" id="view_inventory">Your equipment</button></a></div>
+        <div><a href="/#/profile"><button class="waves-effect waves-light btn" id="view_profile">Profile</button></a></div>
+        <div><a href="/#/notifications"><button class="waves-effect waves-light btn" id="view_profile">Notifications</button></a></div>
+    </div>
 
-<div>
-	<label for="category">Category</label>
-	<select name="singleSelect" id="singleSelect" class="browser-default">
-		<!-- <option value="" disabled selected>Category</option> -->
-    <option value="{{category[0].IdCategory}}">{{category[0].title}}</option>
-    <option value="{{category[1].IdCategory}}">{{category[1].title}}</option>
-    <option value="{{category[2].IdCategory}}">{{category[2].title}}</option>
-    <option value="{{category[3].IdCategory}}">{{category[3].title}}</option>
-    <option value="{{category[4].IdCategory}}">{{category[4].title}}</option>
-    <option value="{{category[5].IdCategory}}">{{category[5].title}}</option>
-    <option value="{{category[6].IdCategory}}">{{category[6].title}}</option>
-    <option value="{{category[7].IdCategory}}">{{category[7].title}}</option>
-  </select>
-</div>
+    <div class="col m9 main_container">
+        <section>
+            <div>
+                <label for="name">Name of equipment</label>
+                <input type="text" name="name" ng-model="equipment.name">
+            </div>
 
-<div>
-	<label for="description">Description</label>
-	<input type="text" name="description" ng-model="equipment.description">
-</div>
+            <div>
+                <label for="category">Category</label>
+                <select name="singleSelect" id="singleSelect" class="browser-default">
+                    <!-- <option value="" disabled selected>Category</option> -->
+                    <option value="{{category[0].IdCategory}}">{{category[0].title}}</option>
+                    <option value="{{category[1].IdCategory}}">{{category[1].title}}</option>
+                    <option value="{{category[2].IdCategory}}">{{category[2].title}}</option>
+                    <option value="{{category[3].IdCategory}}">{{category[3].title}}</option>
+                    <option value="{{category[4].IdCategory}}">{{category[4].title}}</option>
+                    <option value="{{category[5].IdCategory}}">{{category[5].title}}</option>
+                    <option value="{{category[6].IdCategory}}">{{category[6].title}}</option>
+                    <option value="{{category[7].IdCategory}}">{{category[7].title}}</option>
+                </select>
+            </div>
 
-<div>
-	<label for="condition">Condition</label>
-	<input type="text" name="condition" ng-model="equipment.condition">
-</div>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" name="description" ng-model="equipment.description">
+            </div>
 
-<div>
-	<label for="price">Price/Day</label>
-	<input type="number" name="price" ng-model="equipment.pricePerDay">
-</div>
+            <div>
+                <label for="condition">Condition</label>
+                <input type="text" name="condition" ng-model="equipment.condition">
+            </div>
 
-<div>
-<!-- <input type="file" ngf-select="setNewImage($files)" multiple> -->
-  <h6>Upload all images:</h6>
-  <button ngf-select="uploadFiles($files)" multiple 
-          accept="image/*">Select Files</button>
-  <br>
-  <br>Files:
-  <ul>
-      <li ng-repeat="f in files" style="font:smaller">
-          {{f.name}}
-      </li>
-  </ul>
-  <span class="progress" ng-show="progress >= 0">
-      <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-  </span>
-  {{errorMsg}}
-</div>
+            <div>
+                <label for="price">Price/Day</label>
+                <input type="number" name="price" ng-model="equipment.pricePerDay">
+            </div>
 
-<button ng-click="createEquipment()">Start Renting Your Equipment</button>
-
-
-
+            <div>
+            <!-- <input type="file" ngf-select="setNewImage($files)" multiple> -->
+                <h6>Upload all images:</h6>
+                <button class="mybutton waves-effect waves-light btn" ngf-select="uploadFiles($files)" multiple 
+                      accept="image/*">Select Files</button>
+                <br>
+                <br>Files:
+                <ul>
+                    <li ng-repeat="f in files" style="font:smaller">
+                      {{f.name}}
+                    </li>
+                </ul>
+                <span class="progress" ng-show="progress >= 0">
+                    <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+                </span>
+                {{errorMsg}}
+            </div>
+            <button class="mybutton waves-effect waves-light btn" ng-click="createEquipment()">Start Renting Your Equipment</button>
+        </section>
+    </div>
+</article>
 
 
 
