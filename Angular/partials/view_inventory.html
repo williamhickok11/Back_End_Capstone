@@ -1,10 +1,12 @@
 <article class="full_container">
 	<div class="col m3" id="side_bar">
+		<h1 class="logo_abb">SN'S</h1>
 		<div><a href="/#/homepage"><button class="waves-effect waves-light btn" id="view_profile">All Equipment</button></a></div>
 		<div><a href="/#/add_equipment"><button class="waves-effect waves-light btn" id="add_equipment">Add equipment to rent</button></a></div>
 		<div><a href="/#/view_inventory"><button class="waves-effect waves-light btn" id="view_inventory">Your equipment</button></a></div>
 		<div><a href="/#/profile"><button class="waves-effect waves-light btn" id="view_profile">Profile</button></a></div>
 		<div><a href="/#/notifications"><button class="waves-effect waves-light btn" id="view_profile">Notifications</button></a></div>
+		<div><a href="/#/confirmed_rental_dates"><button class="waves-effect waves-light btn" id="view_profile">Confirmed Dates</button></a></div>
 	</div>
 
 	<div class="col m9 main_container">
@@ -12,8 +14,8 @@
 			<header><h1>Your Equipment:</h1></header>
 			<div class="container">
 				<div class="row">
-				  	<div ng-repeat="item in equipment">
-					  	<div ng-click="showModal(item.id)" href="#modal1" class="col m3 individual_equipment modal-trigger">
+				  	<div style="padding: 0" class="col m3" ng-repeat="item in equipment">
+					  	<div ng-click="showModal(item.id)" href="#modal1" class="individual_equipment modal-trigger">
 					  		<div class="equ_info">
 					  			<h5>{{ item.name }}</h5>
 					  			<p class="equ_img"><img ng-src="{{ item.picList[0].image }}" alt=""></p>

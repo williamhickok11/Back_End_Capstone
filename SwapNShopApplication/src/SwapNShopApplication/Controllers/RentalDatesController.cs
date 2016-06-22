@@ -67,6 +67,7 @@ namespace SwapNShopApplication.Controllers
                                                 where mu.IdMusician == rd.IdMusician
                                                 select new Musician
                                                 {
+                                                    IdMusician = mu.IdMusician,
                                                     userName = mu.userName,
                                                     city = mu.city,
                                                     state = mu.state

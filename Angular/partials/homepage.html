@@ -1,5 +1,6 @@
 <article class="full_container">
 	<div class="col m3" id="side_bar">
+		<h1 class="logo_abb">SN'S</h1>
 		<div><a href="/#/homepage"><button class="waves-effect waves-light btn" id="view_profile">All Equipment</button></a></div>
 		<div><a href="/#/add_equipment"><button class="waves-effect waves-light btn" id="add_equipment">Add equipment to rent</button></a></div>
 		<div><a href="/#/view_inventory"><button class="waves-effect waves-light btn" id="view_inventory">Your equipment</button></a></div>
@@ -17,8 +18,8 @@
 			
 			<div class="container">
 				<div class="row">
-					<div ng-repeat="item in equipment">
-					  	<div ng-click="detailsView(item.id)" class="col m3 individual_equipment">
+					<div style="padding: 0" class="col m3" ng-repeat="item in equipment">
+					  	<div ng-click="detailsView(item.id)" class="individual_equipment">
 					  		<div class="equ_info">
 						  		<h5>{{ item.name }}</h5>
 						  		<p class="equ_img"><img ng-src="{{ item.picList[0].image }}" alt=""></p>
