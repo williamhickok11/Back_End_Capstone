@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SwapNShopApplication.Models
 {
-    public class Comment
+    public class CommentPost
     {
-        [Key]
         public int IdComment { get; set; }
         public string message { get; set; }
         public DateTime date { get; set; }
-        public int IdMusician { get; set; }
-
-        //public ICollection<CommentList> CommentList { get; set; }
+        public int IdPostingMusician { get; set; }
+        public int IdRecievingMusician { get; set; }
     }
 }

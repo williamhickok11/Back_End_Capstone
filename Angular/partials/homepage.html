@@ -9,14 +9,19 @@
 
 	<div class="col m9 main_container">
 		<section>
-			<header><h1>What are you looking to rent?</h1></header>
+			<header id="main_header">
+				<h1>Swap N' Shop</h1>
+				<h3>What are you looking to rent?</h3>
+			</header>
+			
 			<div class="container">
 				<div class="row">
 					<div ng-repeat="item in equipment">
 					  	<div ng-click="detailsView(item.id)" class="col m3 individual_equipment">
-					  		<p>{{ item.name }}</p>
-					  		<p><img ng-src="{{ item.picList[0].image }}" alt=""></p>
-					  		<p>{{ item.Musician }}</p>
+					  		<h5>{{ item.name }}</h5>
+					  		<h6>{{ item.musician }}</h6>
+					  		<p class="equ_img"><img ng-src="{{ item.picList[0].image }}" alt=""></p>
+					  		<h5>${{ item.pricePerDay }}.00/Day</h5>
 					  	</div>
 					</div>
 				</div>

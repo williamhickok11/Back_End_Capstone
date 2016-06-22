@@ -13,6 +13,7 @@ SwapNShop.controller("userPageCtrl", [
   		$scope.currUser = AuthFactory.getUser();
       	$scope.currSelectedUserId = SelectedUserFactory.getUserId();
 		$scope.selectedUser = {};
+		$scope.allComments = [];
 		console.log("selsectedUser", $scope.currSelectedUserId);
 
 		// Get access to the user that has been clicked on
@@ -21,7 +22,15 @@ SwapNShop.controller("userPageCtrl", [
 			.success(selectedUser => {
 				$scope.selectedUser = selectedUser[0];
 				console.log($scope.selectedUser);
-			});
+			})
+		.then(function(){
+			$http
+			.get(`http://localhost:49881/api/Comments/${$scope.currSelectedUserId}`)
+			.success(comments => {
+				$scope.allComments = comments;
+				console.log($scope.allComments);
+			})
+		})
 	}
 ]);
 

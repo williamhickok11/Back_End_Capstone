@@ -16,5 +16,12 @@
 			  	<h5>Rating: {{selectedUser.rating}}</h5>
 		  	</div>
 		</section>
+		<section class="user_comments">
+			<div class="message" ng-repeat="comm in allComments">
+				<p>{{ comm.date }}</p>
+				<p>{{ comm.message }}</p>
+				<p>{{ comm.sender }}</p>
+			</div>
+		</section>
 	</div>
 </article>

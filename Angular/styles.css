@@ -53,6 +53,10 @@ body {
     margin-bottom: 0;
 }
 
+#main_header {
+    text-align: center;
+}
+
 /*FILE UPLOAD*/
 .thumb {
     width: 24px;
@@ -83,21 +87,21 @@ form .progress {
 }
 
 .individual_equipment {
-    /*box-sizing: border-box;*/
-	/*width: 30%;*/
 	border: 2px solid black;
-	/*margin: 2px 2px;*/
-    height: 200px;
+    height: 280px;
+    text-align: center;
 }
-
 .individual_equipment:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .individual_equipment img {
 	max-height: 70px;
     margin: 0 auto;
-    max-width: 100px;
+    /*max-width: 100px;*/
+}
+.equ_img {
+    /*margin: 0 auto;*/
+    text-align: center;
 }
 
 

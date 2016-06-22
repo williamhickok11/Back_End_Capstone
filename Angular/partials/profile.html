@@ -25,5 +25,12 @@
 			  	<button class="mybutton waves-effect waves-light btn" ng-click="saveChanges(); hideEdit = !hideEdit">save changes</button>
 		  	</div>
 		</section>
+		<section class="user_comments">
+			<div class="message" ng-repeat="comm in allComments">
+				<p>{{ comm.date }}</p>
+				<p>{{ comm.message }}</p>
+				<p>{{ comm.sender }}</p>
+			</div>
+		</section>
 	</div>
 </article>

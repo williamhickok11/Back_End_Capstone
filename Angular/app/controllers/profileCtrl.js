@@ -18,7 +18,20 @@ SwapNShop.controller("profileCtrl", [
 			.success(selectedUser => {
 				$scope.currUser = selectedUser[0];
 				console.log($scope.currUser);
-			});
+			})
+			.then(function(){
+				$http
+				.get(`http://localhost:49881/api/Comments/${currentUser.IdMusician}`)
+				.success(comments => {
+					$scope.allComments = comments;
+					// refactor the dates
+					for (var i = 0; i < $scope.allComments.length; i++) {
+						var date = $scope.allComments[i].date.split(/\-|\T/);
+						$scope.allComments[i].date = date[1] + "/" + date[2] + "/" + date[0];
+					}
+					console.log("allComments", $scope.allComments)
+				})
+			})
 
 		$scope.saveChanges = function() {
 			console.log($scope.currUser)
@@ -29,6 +42,7 @@ SwapNShop.controller("profileCtrl", [
 		        method: 'PUT',
 		        data: JSON.stringify($scope.currUser)
 		     })
+
 		}
 
 	}
