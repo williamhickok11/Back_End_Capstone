@@ -41,6 +41,10 @@ SwapNShop.config(["$routeProvider",
         templateUrl: "partials/details_view.html",
         controller: 'detailsCtrl'
       }).
+      when("/confirmed_rental_dates", {
+        templateUrl: "partials/confirmed_rental_dates.html",
+        controller: 'confirmedRDCtrl'
+      }).
       otherwise({
         redirectTo: "/"
       });
