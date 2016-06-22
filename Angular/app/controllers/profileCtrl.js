@@ -7,21 +7,29 @@ SwapNShop.controller("profileCtrl", [
   	"$routeParams",
   	"EquipFactory",
   	"AuthFactory",
+  	"SelectedUserFactory",
 
   	function ($scope, $http, $location, $routeParams, EquipFactory, AuthFactory) {
 		$scope.currUser = {};
-		let currentUser = AuthFactory.getUser();
+		let currMusician = AuthFactory.getUser();
+		$scope.allComments = [];
+
+		// View the page of the user you clicked on
+	    $scope.goToPerson = function (id) {
+	      	SelectedUserFactory.setUserId(id)
+	      	$location.path("/user_page");
+	    }
 
 		// Get access to the loged in user
 		$http
-			.get(`http://localhost:49881/api/Musician/${currentUser.IdMusician}`)
+			.get(`http://localhost:49881/api/Musician/${currMusician.IdMusician}`)
 			.success(selectedUser => {
 				$scope.currUser = selectedUser[0];
 				console.log($scope.currUser);
 			})
 			.then(function(){
 				$http
-				.get(`http://localhost:49881/api/Comments/${currentUser.IdMusician}`)
+				.get(`http://localhost:49881/api/Comments/${currMusician.IdMusician}`)
 				.success(comments => {
 					$scope.allComments = comments;
 					// refactor the dates
@@ -38,7 +46,7 @@ SwapNShop.controller("profileCtrl", [
 
 			console.log("go");
 			$http({
-		        url:`http://localhost:49881/api/Musician/${currentUser.IdMusician}`,
+		        url:`http://localhost:49881/api/Musician/${currMusician.IdMusician}`,
 		        method: 'PUT',
 		        data: JSON.stringify($scope.currUser)
 		     })

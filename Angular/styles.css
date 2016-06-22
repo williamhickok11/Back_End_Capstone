@@ -87,6 +87,7 @@ form .progress {
 }
 
 .individual_equipment {
+    cursor: pointer;
 	border: 2px solid black;
     height: 280px;
     text-align: center;
@@ -145,4 +146,33 @@ form .progress {
 
 .go_to_person {
     cursor: pointer;
+}
+
+
+/*Profile Page*/
+.hr_profile {
+    margin-top: 30px;
+}
+.message {
+    background-color: lightgrey;
+    border-top: 1px grey solid;
+    border-bottom: 1px grey solid;
+    margin-bottom: 15px;
+    padding: 0 30px;
+    padding-top: 10px;
+}
+.message_div{
+    margin: 0 auto;
+    width: 85%;
+    border: 1px solid darkgrey;
+    border-radius: 10px;
+    background-color: lightgrey;
+    /*height: 0px;*/
+    /*padding-top: 60px;*/
+}
+.message_p {
+    margin-top: 0;
+}
+.add_comment h4 {
+    margin-left: 10%;
 }

@@ -10,7 +10,12 @@ SwapNShop.controller("addEquipmentCtrl", [
   // 'ngFileUpload',
 
   function ($scope, $http, AuthFactory, Upload, $timeout, $location) {
-  	$scope.equipment = {};
+  	let currMusician = AuthFactory.getUser();
+    // Check to see if a user is logged in. If not, route them to log in
+    if (currMusician === null){
+      $location.path("/login");
+    }
+    $scope.equipment = {};
   	$scope.category = {};
   	// Store the uploaded images in a local array
   	let imageList = [];

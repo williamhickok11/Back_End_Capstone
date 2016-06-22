@@ -10,14 +10,14 @@ SwapNShop.controller("detailsCtrl", [
 
   function ($scope, $http, $location, EquipFactory, AuthFactory, SelectedUserFactory) {
 
+    $scope.curMusicican = AuthFactory.getUser();
     // Activate modal for rental
     $('.modal-trigger').leanModal();
 
     $scope.rentalDates;
-  	$scope.equipment;
+    $scope.equipment;
     let rentalDatesObject = {};
     let curr_equipment_ID = EquipFactory.getEquipment();
-    $scope.curMusicican = AuthFactory.getUser();
     console.log('currMusician', $scope.curMusicican);
     
     rentalDatesObject.IdEquipment = curr_equipment_ID;

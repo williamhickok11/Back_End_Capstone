@@ -4,18 +4,7 @@
 
 let SwapNShop = angular.module("SwapNShop", ["ngRoute", "ngFileUpload"])
 
-let isAuth = (authFactory) => new Promise((resolve, reject) => {
-    let userToken = authFactory.getUserToken();
 
-    if (userToken) {
-        console.log("user authenticated");    
-        resolve();
-    }
-    else {
-        console.log("user is not authenticated");    
-        reject();
-    }
-});
 
 SwapNShop.config(["$routeProvider",
   function ($routeProvider) {

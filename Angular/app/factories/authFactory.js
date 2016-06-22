@@ -1,24 +1,16 @@
 "use strict";
 
-SwapNShop.factory('AuthFactory', [
+SwapNShop.factory('AuthFactory', ['$rootScope', '$location',
 
-function () {
-
-	// isAuthenticated () {
- //      	// authenticate the user (all the date associated with the current user)
- //      	let authData = ref.getAuth();
- //      	console.log("authData", authData);
- //      	if (authData) {
- //       		return true;
- //      	} else {
- //        	return false;
- //      	}
- //    },
+function ($rootScope, $location) {
 
 	let currentUser = null;
 
 	return {
 		getUser () {
+			// if (currentUser === null){
+   //    			$location.path("/login");
+   //  		}
 			return currentUser;
 		},
 		setUser (user) {
@@ -27,3 +19,9 @@ function () {
 	}
 }
 ]);
+
+// myServices.factory('Factory', ['$rootScope', '$location', function ($rootScope, $location) {
+//   // do something and redirect
+//   $location.path('path')
+//   $rootScope.$apply()
+// }])

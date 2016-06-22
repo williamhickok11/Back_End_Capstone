@@ -18,18 +18,21 @@
 		  	<button class="mybutton waves-effect waves-light btn" ng-click="hideEdit = !hideEdit">edit profile</button>
 		  	<div id="edit_user" ng-show="hideEdit" class="container hidden">
 			  	UserName:<input ng-model="currUser.userName" type="text">
-			  	UserName:<input ng-model="currUser.email" type="text">
+			  	Email:<input ng-model="currUser.email" type="text">
 			  	City:<input ng-model="currUser.city" type="text">
 			  	State:<input ng-model="currUser.state" type="text">
 			  	About:<input ng-model="currUser.description" type="text">
 			  	<button class="mybutton waves-effect waves-light btn" ng-click="saveChanges(); hideEdit = !hideEdit">save changes</button>
 		  	</div>
 		</section>
+		<hr class="hr_profile">
+		<hr>
 		<section class="user_comments">
+			<h4>Comments:</h4>
 			<div class="message" ng-repeat="comm in allComments">
-				<p>{{ comm.date }}</p>
-				<p>{{ comm.message }}</p>
-				<p>{{ comm.sender }}</p>
+				<p class="message_p">{{ comm.date }}</p>
+				<p class="message_p">{{ comm.message }}</p>
+				<p ng-click="goToPerson(comm.SenderId)" class="message_p">{{ comm.sender }}</p>
 			</div>
 		</section>
 	</div>

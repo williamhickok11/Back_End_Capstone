@@ -8,10 +8,10 @@ SwapNShop.controller("viewInventoryCtrl", [
   "SelectedUserFactory",
 
   function ($scope, $http, $location, AuthFactory, SelectedUserFactory) {
+    let user = AuthFactory.getUser();
     $scope.equipment = [];
     $scope.selectedEquipment = {};
     $scope.rentalDates = [];
-    let user = AuthFactory.getUser();
     console.log('user', user.IdMusician)
     var curr_musician_ID = parseInt(user.IdMusician);
 

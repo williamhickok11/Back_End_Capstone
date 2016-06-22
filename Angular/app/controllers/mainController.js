@@ -8,8 +8,8 @@ SwapNShop.controller("mainCtrl", [
     "AuthFactory",
 
     function ($scope, $http, $location, EquipFactory, AuthFactory) {
-	  	$scope.equipment = [];
 	  	let currMusician = AuthFactory.getUser();
+	  	$scope.equipment = [];
 	  	console.log(currMusician);
 
 	  	$scope.detailsView = function(equID){
