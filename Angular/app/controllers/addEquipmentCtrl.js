@@ -86,7 +86,3 @@ SwapNShop.controller("addEquipmentCtrl", [
 	}
 ]);
 
-
-
-
-    

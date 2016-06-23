@@ -44,7 +44,8 @@ namespace SwapNShopApplication.Controllers
                            {
                                message = c.message,
                                date = c.date,
-                               sender = m.userName
+                               sender = m.userName,
+                               senderId = m.IdMusician
                            };
             return Ok(comments);
         }

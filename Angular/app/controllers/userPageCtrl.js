@@ -4,12 +4,13 @@ SwapNShop.controller("userPageCtrl", [
   	"$scope",
   	"$http",
   	"$location",
+  	"$route",
   	"$routeParams",
   	"EquipFactory",
   	"AuthFactory",
   	"SelectedUserFactory",
 
-  	function ($scope, $http, $location, $routeParams, EquipFactory, AuthFactory, SelectedUserFactory) {
+  	function ($scope, $http, $location, $route, $routeParams, EquipFactory, AuthFactory, SelectedUserFactory) {
   		$scope.currUser = AuthFactory.getUser();
       	$scope.currSelectedUserId = SelectedUserFactory.getUserId();
 		$scope.selectedUser = {};
@@ -18,10 +19,17 @@ SwapNShop.controller("userPageCtrl", [
 		console.log("selsectedUser", $scope.currSelectedUserId);
 
 		// View the page of the user you clicked on
-	    $scope.goToPerson = function (id) {
+      	$scope.goToPerson = function (id) {
+      		console.log("go tp person")
+      		console.log(id);
 	      	SelectedUserFactory.setUserId(id)
-	      	$location.path("/user_page");
+	      	if ($scope.currUser.IdMusician == id){
+	        	$location.path("/profile");
+	      	} else {
+	        	$location.path("/user_page");
+	      	}
 	    }
+    
 
 	    $scope.leaveAComment = function() {
 	    	$scope.newComment.IdPostingMusician = $scope.currUser.IdMusician;
@@ -36,6 +44,7 @@ SwapNShop.controller("userPageCtrl", [
 			}).
 			then(function(){
 				$scope.newComment.message = "";
+				$route.reload();
 			});
 	    }
 	    

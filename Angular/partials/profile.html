@@ -11,8 +11,9 @@
 
 	<div class="col m9 main_container">
 		<section ng-model="currUser">
-			<header><h2 class="h1_tag">{{currUser.userName}}'s Profile:</h2></header>
+			<header><h2 class="h1_tag">My Profile:</h2></header>
 			<div class="container">
+			  	<h5>User Name: {{currUser.userName}}</h5>
 			  	<h5>{{currUser.city}}, {{currUser.state}}</h5>
 			  	<h5>About: {{currUser.description}}</h5>
 			  	<h5>Rating: {{currUser.rating}}</h5>
@@ -34,7 +35,7 @@
 			<div class="message" ng-repeat="comm in allComments">
 				<p class="message_p">{{ comm.date }}</p>
 				<p class="message_p">{{ comm.message }}</p>
-				<p ng-click="goToPerson(comm.SenderId)" class="message_p">{{ comm.sender }}</p>
+				<p ng-click="goToPerson(comm.senderId)" class="message_p musician_on_equ_page">{{ comm.sender }}</p>
 			</div>
 		</section>
 	</div>

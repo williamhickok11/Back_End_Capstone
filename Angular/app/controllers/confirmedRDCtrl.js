@@ -14,7 +14,11 @@ SwapNShop.controller("confirmedRDCtrl", [
         
         $scope.goToPerson = function (id) {
             SelectedUserFactory.setUserId(id)
-            $location.path("/user_page");
+            if (currMusician.IdMusician == id){
+                $location.path("/profile");
+            } else {
+                $location.path("/user_page");
+            }
         }
 
         $http

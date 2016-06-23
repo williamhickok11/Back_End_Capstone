@@ -23,7 +23,7 @@
 			<div class="message" ng-repeat="comm in allComments">
 				<p class="message_p">{{ comm.date }}</p>
 				<p class="message_p">{{ comm.message }}</p>
-				<p ng-click="goToPerson(comm.SenderId)" class="message_p musician_on_equ_page">{{ comm.sender }}</p>
+				<p ng-click="goToPerson(comm.senderId)" class="message_p musician_on_equ_page">{{ comm.sender }}</p>
 			</div>
 		</section>
 		<hr>

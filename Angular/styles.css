@@ -13,6 +13,16 @@ h1, h2 {
 h2 {
     font-size: 70px
 }
+h3 {
+    color: #663300;
+}
+h3, h4, h5, h6 {
+    font-family: 'Hind', sans-serif;
+}
+p {
+    color: #663300;
+    font-weight: 700;
+}
 .nav-wrapper {
     background: #4d79ff;
 }
@@ -135,7 +145,8 @@ form .progress {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .individual_equipment img {
-	max-height: 70px;
+    max-height: 100px;
+	max-width: 125px;
     margin: 0 auto;
     /*max-width: 100px;*/
 }
@@ -218,6 +229,7 @@ form .progress {
 }
 .message_div{
     margin: 0 auto;
+    margin-bottom: 200px
     width: 85%;
     border: 1px solid darkgrey;
     border-radius: 10px;

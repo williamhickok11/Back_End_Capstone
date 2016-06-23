@@ -10,7 +10,7 @@ SwapNShop.controller("detailsCtrl", [
 
   function ($scope, $http, $location, EquipFactory, AuthFactory, SelectedUserFactory) {
 
-    $scope.curMusicican = AuthFactory.getUser();
+    $scope.curMusician = AuthFactory.getUser();
     // Activate modal for rental
     $('.modal-trigger').leanModal();
 
@@ -19,10 +19,10 @@ SwapNShop.controller("detailsCtrl", [
     let rentalDatesObject = {};
     $scope.currImage;
     let curr_equipment_ID = EquipFactory.getEquipment();
-    console.log('currMusician', $scope.curMusicican);
+    console.log('currMusician', $scope.curMusician);
     
     rentalDatesObject.IdEquipment = curr_equipment_ID;
-    rentalDatesObject.IdMusician = $scope.curMusicican.IdMusician;
+    rentalDatesObject.IdMusician = $scope.curMusician.IdMusician;
 
     // Get access to the specific item the user clicked on
 		$http
@@ -30,7 +30,7 @@ SwapNShop.controller("detailsCtrl", [
 			.success(inv => {
 				$scope.equipment = inv[0];
         // Set variables to compare for ng-if
-        $scope.MusicianID = $scope.curMusicican.IdMusician
+        $scope.MusicianID = $scope.curMusician.IdMusician
         $scope.EQMusicianID = $scope.equipment.musicianID
         $scope.currImage = $scope.equipment.picList[0].image
         console.log("MusicianID", $scope.MusicianID);
@@ -79,10 +79,10 @@ SwapNShop.controller("detailsCtrl", [
 
       // Post a new notification for the owner to see that the equipment has been requested
       let notificationCreation = {
-        IdPostingMusician : $scope.curMusicican.IdMusician,
+        IdPostingMusician : $scope.curMusician.IdMusician,
         IdRecievingMusician : ownerID,
         newRentalRequest : true,
-        description : `${$scope.curMusicican.userName} sent you a rental request`,
+        description : `${$scope.curMusician.userName} sent you a rental request`,
       }
       // Post a deny request notification
       $http({
@@ -93,9 +93,13 @@ SwapNShop.controller("detailsCtrl", [
     }
 
     $scope.goToPerson = function (id) {
-        SelectedUserFactory.setUserId(id)
-        $location.path("/user_page");
+      SelectedUserFactory.setUserId(id)
+      if ($scope.curMusician.IdMusician == id){
+        $location.path("/profile");
+      } else {
+         $location.path("/user_page");
       }
+    }
 	}
 ]);
 

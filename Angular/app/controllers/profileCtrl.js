@@ -9,15 +9,23 @@ SwapNShop.controller("profileCtrl", [
   	"AuthFactory",
   	"SelectedUserFactory",
 
-  	function ($scope, $http, $location, $routeParams, EquipFactory, AuthFactory) {
+  	function ($scope, $http, $location, $routeParams, EquipFactory, AuthFactory, SelectedUserFactory) {
 		$scope.currUser = {};
 		let currMusician = AuthFactory.getUser();
 		$scope.allComments = [];
 
+		if (currMusician === null){
+	      	$location.path("/login");
+	    }
+
 		// View the page of the user you clicked on
 	    $scope.goToPerson = function (id) {
 	      	SelectedUserFactory.setUserId(id)
-	      	$location.path("/user_page");
+	      	if ($scope.currUser.IdMusician == id){
+	        	$location.path("/profile");
+	      	} else {
+	        	$location.path("/user_page");
+	      	}
 	    }
 
 		// Get access to the loged in user

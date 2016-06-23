@@ -9,11 +9,16 @@ SwapNShop.controller("viewInventoryCtrl", [
 
   function ($scope, $http, $location, AuthFactory, SelectedUserFactory) {
     let user = AuthFactory.getUser();
+    console.log(user)
     $scope.equipment = [];
     $scope.selectedEquipment = {};
     $scope.rentalDates = [];
     console.log('user', user.IdMusician)
     var curr_musician_ID = parseInt(user.IdMusician);
+
+    if (user === null){
+      $location.path("#/login");
+    }
 
     //Populate the modal
     $scope.showModal = function(id){
@@ -56,7 +61,11 @@ SwapNShop.controller("viewInventoryCtrl", [
     // View the page of the user you clicked on
     $scope.goToPerson = function (id) {
       SelectedUserFactory.setUserId(id)
-      $location.path("/user_page");
+      if (user.IdMusician == id){
+        $location.path("/profile");
+      } else {
+        $location.path("/user_page");
+      }
     }
 
     let deleteRentalRequestNote = function(recievingMusicianId) {
