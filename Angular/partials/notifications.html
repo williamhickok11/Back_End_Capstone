@@ -16,6 +16,7 @@
 			<hr>
 		  	<div ng-repeat="note in allNotifications">
 				<div class="row">
+					<i ng-if="note.newRentalRequest === true" class="material-icons">
 					<h4>From: {{note.sender}}</h4>
 					<h6>--{{note.description}}</h6>
 					<button ng-click="gotIt(note.ID)" ng-if="note.newRentalRequest === false">got it</button>

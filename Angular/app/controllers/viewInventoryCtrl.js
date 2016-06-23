@@ -138,7 +138,7 @@ SwapNShop.controller("viewInventoryCtrl", [
           })
         }
       })
-      $route.reload();
+      $location.path("/notifications");
     }
 	}
 ]);

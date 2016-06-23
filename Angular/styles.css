@@ -84,11 +84,12 @@ p {
     
 .main_container {
     padding: 0 10px;
-    height: 664px;
-    overflow: scroll;   
-    float: right;
+    /*position: absolute;*/
     top: 64px;
     bottom: 0;
+    overflow: scroll;   
+    float: right;
+    height: 708px;
     display: inline-block;
     width: 750px;
     /*vertical-align: top;*/

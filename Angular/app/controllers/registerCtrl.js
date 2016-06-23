@@ -7,7 +7,6 @@ SwapNShop.controller('registerCtrl', [
 	'AuthFactory',
 
 	function ($http, $scope, $location, AuthFactory) {
-
 		$scope.dataFromFireUser = {};
 
 		//Github oAuth
