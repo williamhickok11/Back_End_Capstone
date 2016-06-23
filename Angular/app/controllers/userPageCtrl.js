@@ -20,7 +20,6 @@ SwapNShop.controller("userPageCtrl", [
 
 		// View the page of the user you clicked on
       	$scope.goToPerson = function (id) {
-      		console.log("go tp person")
       		console.log(id);
 	      	SelectedUserFactory.setUserId(id)
 	      	if ($scope.currUser.IdMusician == id){

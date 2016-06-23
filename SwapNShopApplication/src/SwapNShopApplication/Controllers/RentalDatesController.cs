@@ -25,7 +25,7 @@ namespace SwapNShopApplication.Controllers
         }
         // GET: api/values
         [HttpGet]
-        public IActionResult Get([FromQuery]int? EquipmentID, [FromQuery]int? MusicianID)
+        public IActionResult Get([FromQuery]int? EquipmentID, [FromQuery]int? MusicianID, [FromQuery]bool? confirmCheck)
         {
             // Get all the rental dates for one piece of equipment
             if (EquipmentID != null)
@@ -43,8 +43,8 @@ namespace SwapNShopApplication.Controllers
                                       musician = m.userName,
                                       confirmed = rd.confirmed
                                   };
-
-                rentalDates = rentalDates.Where(r => r.IdEquipment == EquipmentID);
+                rentalDates = rentalDates.Where(r => r.IdEquipment == EquipmentID && r.confirmed == confirmCheck);
+                
                 return Ok(rentalDates);
             }
             if (MusicianID != null)

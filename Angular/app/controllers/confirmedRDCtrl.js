@@ -22,7 +22,7 @@ SwapNShop.controller("confirmedRDCtrl", [
         }
 
         $http
-            .get(`http://localhost:49881/api/RentalDates?MusicianID=${currMusician.IdMusician}`)
+            .get(`http://localhost:49881/api/RentalDates?MusicianID=${currMusician.IdMusician}&newRentalCheck=false`)
             .success(dates => {
                 $scope.confirmedRentalDates = dates;
                 console.log("rental Dates", $scope.confirmedRentalDates)

@@ -4,10 +4,11 @@ SwapNShop.controller("viewInventoryCtrl", [
   "$scope",
   "$http",
   "$location",
+  "$route",
   "AuthFactory",
   "SelectedUserFactory",
 
-  function ($scope, $http, $location, AuthFactory, SelectedUserFactory) {
+  function ($scope, $http, $location, $route, AuthFactory, SelectedUserFactory) {
     let user = AuthFactory.getUser();
     console.log(user)
     $scope.equipment = [];
@@ -26,7 +27,7 @@ SwapNShop.controller("viewInventoryCtrl", [
       console.log("id", id);
       //Get all the requested rental dates for this particular piece of equipment
       $http
-      .get(`http://localhost:49881/api/RentalDates?EquipmentID=${id}`)
+      .get(`http://localhost:49881/api/RentalDates?EquipmentID=${id}&confirmCheck=false`)
       .success(dates => {
         $scope.rentalDates = dates;
         console.log("rental Dates", $scope.rentalDates)
@@ -137,6 +138,7 @@ SwapNShop.controller("viewInventoryCtrl", [
           })
         }
       })
+      $route.reload();
     }
 	}
 ]);

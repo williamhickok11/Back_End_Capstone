@@ -2,25 +2,27 @@ body {
     background-image: url("partials/BG_IMG.png");
 }
 .h1_tag{
-    text-shadow: 0px 5px 5px grey;
+    margin-bottom: 0;
 }
 
-h1, h2 {   
-    font-family: 'Nunito', sans-serif;
+h1, h2 {
+    text-shadow: 0px 5px 5px #313133;
+    font-family: 'Asap', sans-serif;
     font-size: 90px;
-    color: #663300;
+    color: white;
 }
 h2 {
     font-size: 70px
 }
 h3 {
-    color: #663300;
+    color: #313133;
 }
 h3, h4, h5, h6 {
     font-family: 'Hind', sans-serif;
+    color: #313133;
 }
 p {
-    color: #663300;
+    color: #313133;
     font-weight: 700;
 }
 .nav-wrapper {
@@ -29,7 +31,7 @@ p {
 .login {
     text-align: center;
     max-width: 400px;
-    border: 2px solid black;
+    border: 2px solid #313133;
     border-radius: 20px;
     margin: 25px auto;
     background:white;
@@ -73,7 +75,7 @@ p {
     background: #4d79ff
 }
 .logo_abb {
-    text-shadow: 0px 5px 5px grey;
+    text-shadow: 0px 5px 5px #313133;
     margin-top:0;
     margin-bottom:5px;
     font-size: 80px;
@@ -119,6 +121,7 @@ form .progress {
 /*ALL equipment view*/
 .full_container{
     width: 1000px;
+    height: 664px;
     margin: 0 auto;
 }
 
@@ -135,7 +138,7 @@ form .progress {
 
 .individual_equipment {
     cursor: pointer;
-	border: 2px solid black;
+	border: 2px solid #313133;
     height: 280px;
     text-align: center;
     margin:2px 2px;
@@ -161,7 +164,7 @@ form .progress {
 /*Details view*/
 .detials_img {
     height: 300px;
-    border: 1px solid black;
+    border: 1px solid #313133;
 }
 
 .thumb_nail_img_div{
@@ -171,7 +174,7 @@ form .progress {
 
 .thumb_nail_img {
     height: 35px;
-    border: 1px solid black;
+    border: 1px solid #313133;
     cursor: pointer;
 }
 
@@ -190,6 +193,7 @@ form .progress {
 /*Modal -- details view*/
 .modal-content {
     padding-bottom: 0;
+    color: #313133;
 }
 
 .datepicker{
@@ -217,7 +221,7 @@ form .progress {
 
 /*Profile Page*/
 .hr_profile {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .message {
     background-color: lightgrey;
@@ -250,4 +254,8 @@ form .progress {
 .add_comment h4 {
     margin-left: 10%;
     margin-bottom: 40px;
+}
+
+.black_text {
+    color: #313133;
 }
