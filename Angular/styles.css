@@ -1,8 +1,17 @@
 body {
     background-image: url("partials/BG_IMG.png");
 }
-h1 {
+.h1_tag{
+    text-shadow: 0px 5px 5px grey;
+}
 
+h1, h2 {   
+    font-family: 'Nunito', sans-serif;
+    font-size: 90px;
+    color: #663300;
+}
+h2 {
+    font-size: 70px
 }
 .nav-wrapper {
     background: #4d79ff;
@@ -54,8 +63,11 @@ h1 {
     background: #4d79ff
 }
 .logo_abb {
+    text-shadow: 0px 5px 5px grey;
     margin-top:0;
-    font-family: 'Great Vibes', cursive;
+    margin-bottom:5px;
+    font-size: 80px;
+    font-family: 'Nunito', sans-serif;
 }
     
 .main_container {
@@ -161,6 +173,7 @@ form .progress {
     cursor: pointer;
     padding: 3px 0;
     margin: 0 2px;
+    margin-bottom: 5px;
 }
 
 /*Modal -- details view*/
@@ -224,4 +237,5 @@ form .progress {
 }
 .add_comment h4 {
     margin-left: 10%;
+    margin-bottom: 40px;
 }

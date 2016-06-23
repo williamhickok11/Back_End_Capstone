@@ -12,6 +12,11 @@ SwapNShop.controller("confirmedRDCtrl", [
         let currMusician = AuthFactory.getUser();
         $scope.confirmedRentalDates = [];
         
+        $scope.goToPerson = function (id) {
+            SelectedUserFactory.setUserId(id)
+            $location.path("/user_page");
+        }
+
         $http
             .get(`http://localhost:49881/api/RentalDates?MusicianID=${currMusician.IdMusician}`)
             .success(dates => {

@@ -33,7 +33,10 @@ SwapNShop.controller("userPageCtrl", [
 				url:'http://localhost:49881/api/Comments',
 				method: 'POST',
 				data: JSON.stringify($scope.newComment)
-			})
+			}).
+			then(function(){
+				$scope.newComment.message = "";
+			});
 	    }
 	    
 		// Get access to the user that has been clicked on
@@ -48,6 +51,10 @@ SwapNShop.controller("userPageCtrl", [
 			.get(`http://localhost:49881/api/Comments/${$scope.currSelectedUserId}`)
 			.success(comments => {
 				$scope.allComments = comments;
+				for (var i = 0; i < $scope.allComments.length; i++) {
+						var date = $scope.allComments[i].date.split(/\-|\T/);
+						$scope.allComments[i].date = date[1] + "/" + date[2] + "/" + date[0];
+					}
 				console.log($scope.allComments);
 			})
 		})
