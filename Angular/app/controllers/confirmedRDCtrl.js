@@ -35,7 +35,7 @@ SwapNShop.controller("confirmedRDCtrl", [
                 }
             })
 
-        $scope.cancelRequest = function(rentalDateId) {
+        $scope.cancelRequest = function(rentalDateId, renterId) {
             // Remove the notification from the page
             let itemToDelete = this.date;
             $scope.confirmedRentalDates.splice($scope.confirmedRentalDates.indexOf(itemToDelete), 1);
@@ -43,17 +43,23 @@ SwapNShop.controller("confirmedRDCtrl", [
             $http({
                 url:`http://localhost:49881/api/RentalDates/${rentalDateId}`,
                 method: 'DELETE',
-              })
-            .then(function(){
-                // Post a notification to inform the user that their request has been canceled
+            })
+            .success(function(){
+                // Post a notification to inform the user that their request has been canceled`
+                let notificationCreation = {
+                    IdPostingMusician : currMusician.IdMusician,
+                    IdRecievingMusician : renterId,
+                    description : `${currMusician.userName} has canceled your rental request`,
+                }
+                // Post a cancel request notification
                 $http({
-                url:`http://localhost:49881/api/Notification/${id}/false`,
-                method: 'DELETE',
-              })
+                    url:'http://localhost:49881/api/Notification',
+                    method: 'POST',
+                    data: JSON.stringify(notificationCreation)
+                })
             })
         }
     }
-
 ]);
 
 

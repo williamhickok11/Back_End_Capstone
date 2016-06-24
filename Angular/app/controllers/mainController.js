@@ -18,6 +18,12 @@ SwapNShop.controller("mainCtrl", [
 	  		$location.path("/details_view");
 	  	}
 
+	  	$(function() {
+	        $('#example').barrating({
+	          	theme: 'fontawesome-stars'
+	        });
+	    });
+
 	  	// Get all the equipment to show on the page
 		$http
 			.get('http://localhost:49881/api/Equipment')

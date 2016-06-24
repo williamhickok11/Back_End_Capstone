@@ -16,11 +16,11 @@
 			<hr>
 		  	<div ng-repeat="note in allNotifications">
 				<div class="row">
-					<i ng-if="note.newRentalRequest === true" class="material-icons">
+					<!-- <i ng-if="note.newRentalRequest === true" class="material-icons"> -->
 					<h4>From: {{note.sender}}</h4>
 					<h6>--{{note.description}}</h6>
-					<button ng-click="gotIt(note.ID)" ng-if="note.newRentalRequest === false">got it</button>
-					<button ng-click="viewInventory()" ng-if="note.newRentalRequest === true">view inventory</button>
+					<button class="waves-effect waves-light btn" ng-click="gotIt(note.ID)" ng-if="note.newRentalRequest === false">got it</button>
+					<button class="waves-effect waves-light btn" ng-click="viewInventory()" ng-if="note.newRentalRequest === true">view inventory</button>
 				</div>
 				<hr/>
 		  	</div>
