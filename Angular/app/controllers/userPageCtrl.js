@@ -25,7 +25,7 @@ SwapNShop.controller("userPageCtrl", [
 	      	if ($scope.currUser.IdMusician == id){
 	        	$location.path("/profile");
 	      	} else {
-	        	$location.path("/user_page");
+	        	$route.reload();
 	      	}
 	    }
     

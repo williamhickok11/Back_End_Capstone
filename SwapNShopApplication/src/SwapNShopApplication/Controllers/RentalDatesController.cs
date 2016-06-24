@@ -71,7 +71,19 @@ namespace SwapNShopApplication.Controllers
                                                     userName = mu.userName,
                                                     city = mu.city,
                                                     state = mu.state
-                                                })
+                                                }),
+                                      picture = (from pl in _context.PictureList
+                                                join e in _context.Equipment
+                                                on pl.IdEquipment equals e.IdEquipment
+
+                                                join p in _context.Picture
+                                                on pl.IdPicture equals p.IdPicture
+
+                                                where pl.IdEquipment == rd.IdEquipment
+                                                select new Picture
+                                                {
+                                                    image = p.image
+                                                }).First()
                                   };
 
                 return Ok(rentalDates);

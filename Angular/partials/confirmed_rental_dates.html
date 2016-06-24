@@ -26,6 +26,12 @@
 							<li>{{date.equipmentName}}</li>
 						</ul>
 					</div>
+					<div class="col m4 RD_img">
+						<img ng-src="{{date.picture.image}}" alt="">
+					</div>
+					<div class="col m2">
+						<button ng-click="cancelRequest(date.IdRentalDates)" class="waves-effect waves-light btn">Cancel</button>
+					</div>
 				</div>
 				<hr/>
 	      	</div>

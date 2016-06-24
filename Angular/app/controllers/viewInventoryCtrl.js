@@ -94,6 +94,9 @@ SwapNShop.controller("viewInventoryCtrl", [
               url:`http://localhost:49881/api/RentalDates/${id}`,
               method: 'PUT',
             })
+          .then(function(){
+            $route.reload();
+          })
           //Notify the rent request user that you have confirmed the rental
           let notificationCreation = {
               IdPostingMusician : user.IdMusician,
@@ -136,9 +139,11 @@ SwapNShop.controller("viewInventoryCtrl", [
               deleteRentalRequestNote(recievingMusicianId);
             })
           })
+          .then(function(){
+            $route.reload();
+          })
         }
       })
-      $location.path("/notifications");
     }
 	}
 ]);

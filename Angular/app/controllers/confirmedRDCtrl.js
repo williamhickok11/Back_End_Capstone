@@ -34,6 +34,24 @@ SwapNShop.controller("confirmedRDCtrl", [
                     $scope.confirmedRentalDates[i].checkOutDates = checkOutDates[1] + "/" + checkOutDates[2] + "/" + checkOutDates[0];
                 }
             })
+
+        $scope.cancelRequest = function(rentalDateId) {
+            // Remove the notification from the page
+            let itemToDelete = this.date;
+            $scope.confirmedRentalDates.splice($scope.confirmedRentalDates.indexOf(itemToDelete), 1);
+            // Delete the notification from the database
+            $http({
+                url:`http://localhost:49881/api/RentalDates/${rentalDateId}`,
+                method: 'DELETE',
+              })
+            .then(function(){
+                // Post a notification to inform the user that their request has been canceled
+                $http({
+                url:`http://localhost:49881/api/Notification/${id}/false`,
+                method: 'DELETE',
+              })
+            })
+        }
     }
 
 ]);

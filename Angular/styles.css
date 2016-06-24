@@ -67,7 +67,7 @@ p {
 }
 #side_bar button {
     background: #3366ff;
-    width: 78%;
+    width: 75%;
     margin-top: 25px;
     /*background: brown;*/
 }
@@ -259,4 +259,14 @@ form .progress {
 
 .black_text {
     color: #313133;
+}
+
+/*Rental Dates Confirmation*/
+.RD_img {
+    padding-left:0;
+    margin-left:0;
+}
+.RD_img img {
+    margin-top: 15px;
+    height: 100px;
 }
